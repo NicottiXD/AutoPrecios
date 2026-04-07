@@ -16,7 +16,8 @@ function Brands() {
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [versions, setVersions] = useState<any[]>([]);
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
-  
+  const [valuation, setValuation] = useState<any>(null);
+
 
   useEffect(() => {
     fetch("https://argautos.com/api/v1/brands")
@@ -52,6 +53,19 @@ function Brands() {
   }
 };
 
+const getValuation = async (versionId: number) => {
+  try {
+    const res = await fetch(
+      `https://argautos.com/api/v1/versions/${versionId}/valuations`
+    );
+
+    const data = await res.json();
+    setValuation(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   if (selectedModel) {
     return (
       <div className="container">
@@ -70,12 +84,36 @@ function Brands() {
         <div className="row">
           {versions.map((v: any) => (
             <div key={v.id} className="col-6 col-md-3 mb-3">
-              <div className="card p-2 text-center">
+              <div className="card p-2 text-center"
+              style={{cursor:"pointer"}}
+              onClick={()=> getValuation(v.id)}
+              >
                 {v.name}
               </div>
             </div>
           ))}
         </div>
+        {valuation?.data && (
+            <div className="mt-4">
+              <h4>Precios:</h4>
+
+              <div className="row">
+                {valuation.data.map((item: any) => (
+                  <div key={item.id} className="col-6 col-md-3 mb-3">
+                    <div className="card p-2 text-center">
+                      <strong>{item.year}</strong>
+                      <p>
+                        {Number(item.price).toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
       </div>
     );
   }
