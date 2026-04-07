@@ -17,6 +17,7 @@ function Brands() {
   const [versions, setVersions] = useState<any[]>([]);
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [valuation, setValuation] = useState<any>(null);
+  const [showPrices, setShowPrices] = useState(false);
 
 
   useEffect(() => {
@@ -56,7 +57,7 @@ function Brands() {
 const getValuation = async (versionId: number) => {
   try {
     const res = await fetch(
-      `https://argautos.com/api/v1/versions/${versionId}/valuations`
+      `https://argautos.com/api/v1/versions/${versionId}/valuations?format_price=true&relations=version,model,brand`
     );
 
     const data = await res.json();
@@ -66,57 +67,73 @@ const getValuation = async (versionId: number) => {
   }
 };
 
-  if (selectedModel) {
-    return (
-      <div className="container">
-        <button
-          className="btn btn-secondary mb-3"
-          onClick={() => {
-            setSelectedModel(null);
+if (selectedModel) {
+  return (
+    <div className="container">
+
+      {/* BOTÓN VOLVER */}
+      <button
+        className="btn btn-secondary mb-3"
+        onClick={() => {
+          if (showPrices) {
+            setShowPrices(false); // vuelve a versiones
+            setValuation(null);
+          } else {
+            setSelectedModel(null); // vuelve a modelos
             setVersions([]);
-          }}
-        >
-          ← Volver
-        </button>
+          }
+        }}
+      >
+        ← Volver
+      </button>
 
-        <h2>Versiones de {selectedModel}</h2>
+      {/* 🔥 SI ESTÁS VIENDO PRECIOS */}
+      {showPrices && valuation?.data && (
+        <div className="mt-4">
+          <h4>
+            Precios - {valuation?.meta?.brand?.name}{" "}
+            {valuation?.meta?.model?.name}{" "}{valuation?.meta?.version}
+          </h4>
 
-        <div className="row">
-          {versions.map((v: any) => (
-            <div key={v.id} className="col-6 col-md-3 mb-3">
-              <div className="card p-2 text-center"
-              style={{cursor:"pointer"}}
-              onClick={()=> getValuation(v.id)}
-              >
-                {v.name}
+          <div className="row">
+            {valuation.data.map((item: any) => (
+              <div key={item.id} className="col-6 col-md-3 mb-3">
+                <div className="card p-2 text-center">
+                  <strong>{item.year}</strong>
+                  <p>{item.price_formatted}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        {valuation?.data && (
-            <div className="mt-4">
-              <h4>Precios:</h4>
+      )}
 
-              <div className="row">
-                {valuation.data.map((item: any) => (
-                  <div key={item.id} className="col-6 col-md-3 mb-3">
-                    <div className="card p-2 text-center">
-                      <strong>{item.year}</strong>
-                      <p>
-                        {Number(item.price).toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+      {/* 🔥 SI ESTÁS VIENDO VERSIONES */}
+      {!showPrices && (
+        <>
+          <h2>Versiones de {selectedModel}</h2>
+
+          <div className="row">
+            {versions.map((v: any) => (
+              <div key={v.id} className="col-6 col-md-3 mb-3">
+                <div
+                  className="card p-2 text-center"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    getValuation(v.id);
+                    setShowPrices(true);
+                  }}
+                >
+                  {v.name}
+                </div>
               </div>
-            </div>
-          )}
-      </div>
-    );
-  }
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
   
   if (selectedBrand) {
     
