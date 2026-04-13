@@ -97,7 +97,7 @@ function Brands() {
             </h4>
 
             <div className="mb-3 d-flex gap-2">
-              <button className="btn btn-success"
+              <button className={`btn ${currency === "USD" ? "btn-primary" : "btn-outline-primary"}`}
                 onClick={() => {
                   setCurrency("USD")
                   if (selectedVersionId) getValuation(selectedVersionId, "USD");
@@ -106,7 +106,7 @@ function Brands() {
                 USD
               </button>
 
-              <button className="btn btn-primary"
+              <button className={`btn ${currency === "ARS" ? "btn-primary" : "btn-outline-primary"}`}
                 onClick={() => {
                   setCurrency("ARS")
                   if (selectedVersionId) getValuation(selectedVersionId, "ARS");
