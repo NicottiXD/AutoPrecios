@@ -18,7 +18,8 @@ function Brands() {
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [valuation, setValuation] = useState<any>(null);
   const [showPrices, setShowPrices] = useState(false);
-
+  const [currency, setCurrency] = useState("USD");
+  const [selectedVersionId, setSelectedVersionId] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("https://argautos.com/api/v1/brands")
@@ -34,109 +35,130 @@ function Brands() {
       );
       const data = await res.json();
       setModels(data.data);
-      setSelectedBrand(brandName); 
-      
+      setSelectedBrand(brandName);
+
     } catch (error) {
       console.error(error);
     }
   };
 
   const getVersions = async (modelId: number, modelName: string) => {
-  try {
-    const res = await fetch(
-      `https://argautos.com/api/v1/models/${modelId}/versions`
-    );
-    const data = await res.json();
-    setVersions(data.data);
-    setSelectedModel(modelName);
-  } catch (error) {
-    console.error(error);
-  }
-};
+    try {
+      const res = await fetch(
+        `https://argautos.com/api/v1/models/${modelId}/versions`
+      );
+      const data = await res.json();
+      setVersions(data.data);
+      setSelectedModel(modelName);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-const getValuation = async (versionId: number) => {
-  try {
-    const res = await fetch(
-      `https://argautos.com/api/v1/versions/${versionId}/valuations?format_price=true&relations=version,model,brand`
-    );
+  const getValuation = async (versionId: number, currencyType = "USD") => {
+    try {
+      const res = await fetch(
+        `https://argautos.com/api/v1/versions/${versionId}/valuations?currency=${currencyType}&format_price=true&relations=version,model,brand`
+      );
 
-    const data = await res.json();
-    setValuation(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+      const data = await res.json();
+      setValuation(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-if (selectedModel) {
-  return (
-    <div className="container">
+  if (selectedModel) {
+    return (
+      <div className="container">
 
-      {/* BOTÓN VOLVER */}
-      <button
-        className="btn btn-secondary mb-3"
-        onClick={() => {
-          if (showPrices) {
-            setShowPrices(false); // vuelve a versiones
-            setValuation(null);
-          } else {
-            setSelectedModel(null); // vuelve a modelos
-            setVersions([]);
-          }
-        }}
-      >
-        ← Volver
-      </button>
 
-      {/* 🔥 SI ESTÁS VIENDO PRECIOS */}
-      {showPrices && valuation?.data && (
-        <div className="mt-4">
-          <h4>
-            Precios - {valuation?.meta?.brand?.name}{" "}
-            {valuation?.meta?.model?.name}{" "}{valuation?.meta?.version}
-          </h4>
+        <button
+          className="btn btn-secondary mb-3"
+          onClick={() => {
+            if (showPrices) {
+              setShowPrices(false); // vuelve a versiones
+              setValuation(null);
+            } else {
+              setSelectedModel(null); // vuelve a modelos
+              setVersions([]);
+            }
+          }}
+        >
+          ← Volver
+        </button>
 
-          <div className="row">
-            {valuation.data.map((item: any) => (
-              <div key={item.id} className="col-6 col-md-3 mb-3">
-                <div className="card p-2 text-center">
-                  <strong>{item.year}</strong>
-                  <p>{item.price_formatted}</p>
+
+        {showPrices && valuation?.data && (
+          <div className="mt-4">
+            <h4>
+              Precios - {valuation?.meta?.brand?.name}{" "}
+              {valuation?.meta?.model?.name}{" "}{valuation?.meta?.version}
+            </h4>
+
+            <div className="mb-3 d-flex gap-2">
+              <button className="btn btn-success"
+                onClick={() => {
+                  setCurrency("USD")
+                  if (selectedVersionId) getValuation(selectedVersionId, "USD");
+                }}
+              >
+                USD
+              </button>
+
+              <button className="btn btn-primary"
+                onClick={() => {
+                  setCurrency("ARS")
+                  if (selectedVersionId) getValuation(selectedVersionId, "ARS");
+                }}
+              >
+                ARS
+              </button>             
+            </div>
+
+            <div className="row">
+              {valuation.data.map((item: any) => (
+                <div key={item.id} className="col-6 col-md-3 mb-3">
+                  <div className="card p-2 text-center">
+                    <strong>{item.year}</strong>
+                    <p>{item.price_formatted}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* 🔥 SI ESTÁS VIENDO VERSIONES */}
-      {!showPrices && (
-        <>
-          <h2>Versiones de {selectedModel}</h2>
 
-          <div className="row">
-            {versions.map((v: any) => (
-              <div key={v.id} className="col-6 col-md-3 mb-3">
-                <div
-                  className="card p-2 text-center"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    getValuation(v.id);
-                    setShowPrices(true);
-                  }}
-                >
-                  {v.name}
+        {!showPrices && (
+          <>
+            <h2>Versiones de {selectedModel}</h2>
+
+            <div className="row">
+              {versions.map((v: any) => (
+                <div key={v.id} className="col-6 col-md-3 mb-3">
+                  <div
+                    className="card p-2 text-center"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setSelectedVersionId(v.id);
+                      getValuation(v.id);
+                      setShowPrices(true);
+                    }}
+                  >
+                    {v.name}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-  
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    );
+  }
+
   if (selectedBrand) {
-    
+
     return (
       <div className="container">
         <button
@@ -152,12 +174,12 @@ if (selectedModel) {
         <h2>Modelos de {selectedBrand}</h2>
 
         <div className="row">
-          {models.map((model) => (           
+          {models.map((model) => (
 
             <div key={model.id} className="col-6 col-md-3 mb-3">
               <div className="card p-2 text-center"
-              style={{ cursor: "pointer" }}
-              onClick={() => getVersions(model.id, model.name)}
+                style={{ cursor: "pointer" }}
+                onClick={() => getVersions(model.id, model.name)}
               >
                 <img
                   src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop"
@@ -173,7 +195,7 @@ if (selectedModel) {
     );
   }
 
- 
+
   return (
     <div className="container">
       <h2 className="mb-4">Marcas</h2>
