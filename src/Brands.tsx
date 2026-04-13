@@ -113,7 +113,7 @@ function Brands() {
                 }}
               >
                 ARS
-              </button>             
+              </button>
             </div>
 
             <div className="row">
@@ -208,12 +208,19 @@ function Brands() {
               style={{ cursor: "pointer" }}
               onClick={() => getModels(brand.id, brand.name)}
             >
-              <img
-                src={`/Marcas/${brand.name}.png`}
-                alt={brand.name}
-                className="img-fluid"
-                style={{ maxHeight: "100px" }}
-              />
+              <div className="card p-3 d-flex flex-column align-items-center">
+                <img
+                  src={`/Marcas/${brand.name}.png`}
+                  alt={brand.name}
+                  className="img-fluid"
+                  style={{
+                    objectFit: "contain",
+                    height: "80px",
+                    maxWidth: "100px",
+                  }}
+                />
+              </div>
+
               {brand.name}
             </div>
           </div>
