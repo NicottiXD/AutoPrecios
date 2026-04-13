@@ -142,7 +142,7 @@ function Brands() {
                     style={{ cursor: "pointer" }}
                     onClick={() => {
                       setSelectedVersionId(v.id);
-                      getValuation(v.id);
+                      getValuation(v.id, currency);
                       setShowPrices(true);
                     }}
                   >
