@@ -5,7 +5,6 @@ import './index.css'
 import Brands from './Brands';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 createRoot(document.getElementById('root')!).render(
