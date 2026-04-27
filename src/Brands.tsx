@@ -3,8 +3,9 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 type Brand = { id: number; name: string };
 type Model = { id: number; name: string };
+type Props = { searchQuery: string; onNavigate: () => void };
 
-function Brands() {
+function Brands({ searchQuery, onNavigate }: Props) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -22,8 +23,15 @@ function Brands() {
   const [currency, setCurrency] = useState("USD");
   const [loading, setLoading] = useState(false);
 
+  const filteredBrands = brands.filter(brand =>
+    brand.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredModels = models.filter(model =>
+    model.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   useEffect(() => {
-    
     fetch("https://argautos.com/api/v1/brands")
       .then(res => res.json())
       .then(data => setBrands(data.data))
@@ -32,7 +40,7 @@ function Brands() {
 
   useEffect(() => {
     if (selectedBrandId) {
-       setLoading(true);
+      setLoading(true);
       fetch(`https://argautos.com/api/v1/brands/${selectedBrandId}/models`)
         .then(res => res.json())
         .then(data => setModels(data.data))
@@ -43,13 +51,12 @@ function Brands() {
 
   useEffect(() => {
     if (selectedModelId) {
-        setLoading(true);
+      setLoading(true);
       fetch(`https://argautos.com/api/v1/models/${selectedModelId}/versions`)
         .then(res => res.json())
         .then(data => setVersions(data.data))
         .catch(err => console.error(err))
         .finally(() => setLoading(false));
-
     }
   }, [selectedModelId]);
 
@@ -61,7 +68,6 @@ function Brands() {
         .then(data => setValuation(data))
         .catch(err => console.error(err))
         .finally(() => setLoading(false));
-
     }
   }, [selectedVersionId, currency]);
 
@@ -78,7 +84,6 @@ function Brands() {
   if (showPrices && valuation?.data) {
     return (
       <div className="container my-5">
-
         <h4>
           Precios - {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
         </h4>
@@ -92,7 +97,6 @@ function Brands() {
             </div>
           ))}
         </div>
-
         <div className="my-2 d-flex gap-2">
           <button
             className={`btn ${currency === "USD" ? "btn-primary" : "btn-outline-primary"}`}
@@ -107,7 +111,6 @@ function Brands() {
             ARS
           </button>
         </div>
-
       </div>
     );
   }
@@ -115,17 +118,17 @@ function Brands() {
   if (selectedModel) {
     return (
       <div className="container my-5">
-
-
         <h2 className="my-5">Versiones de {selectedModel}</h2>
-
-        <div className="row" >
+        <div className="row">
           {versions.map((v: any) => (
             <div key={v.id} className="col-6 col-md-3 mb-3">
               <div
                 className="card p-2 text-center"
                 style={{ cursor: "pointer" }}
-                onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`)}
+                onClick={() => {
+                  onNavigate();
+                  navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`);
+                }}
               >
                 {v.name}
               </div>
@@ -139,26 +142,31 @@ function Brands() {
   if (selectedBrand) {
     return (
       <div className="container my-5">
-
         <h2 className="my-5">Modelos de {selectedBrand}</h2>
-
         <div className="row">
-          {models.map((model) => (
-            <div key={model.id} className="col-6 col-md-3 mb-3">
-              <div
-                className="card p-2 text-center"
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`)}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop"
-                  alt={model.name}
-                  className="img-fluid mb-2"
-                />
-                {model.name}
+          {filteredModels.length === 0 ? (
+            <p className="text-muted">No se encontraron modelos.</p>
+          ) : (
+            filteredModels.map((model) => (
+              <div key={model.id} className="col-6 col-md-3 mb-3">
+                <div
+                  className="card p-2 text-center"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    onNavigate();
+                    navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`);
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop"
+                    alt={model.name}
+                    className="img-fluid mb-2"
+                  />
+                  {model.name}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     );
@@ -167,25 +175,32 @@ function Brands() {
   return (
     <div className="container my-5">
       <div className="row">
-        {brands.map((brand) => (
-          <div key={brand.id} className="col-6 col-md-4 col-lg-3 mb-3">
-            <div
-              className="card p-2 text-center"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate(`?brand=${brand.name}&brandId=${brand.id}`)}
-            >
-              <div className="card p-3 d-flex flex-column align-items-center">
-                <img
-                  src={`/Marcas/${brand.name}.png`}
-                  alt={brand.name}
-                  className="img-fluid"
-                  style={{ objectFit: "contain", height: "80px", maxWidth: "100px" }}
-                />
+        {filteredBrands.length === 0 ? (
+          <p className="text-muted">No se encontraron marcas.</p>
+        ) : (
+          filteredBrands.map((brand) => (
+            <div key={brand.id} className="col-6 col-md-4 col-lg-3 mb-3">
+              <div
+                className="card p-2 text-center"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  onNavigate();
+                  navigate(`?brand=${brand.name}&brandId=${brand.id}`);
+                }}
+              >
+                <div className="card p-3 d-flex flex-column align-items-center">
+                  <img
+                    src={`/Marcas/${brand.name}.png`}
+                    alt={brand.name}
+                    className="img-fluid"
+                    style={{ objectFit: "contain", height: "80px", maxWidth: "100px" }}
+                  />
+                </div>
+                {brand.name}
               </div>
-              {brand.name}
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
