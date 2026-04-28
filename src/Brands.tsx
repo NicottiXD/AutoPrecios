@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 type Brand = { id: number; name: string };
 type Model = { id: number; name: string };
-type Props = { searchQuery: string; onNavigate: () => void };
 
-function Brands({ searchQuery, onNavigate }: Props) {
+function Brands() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -22,6 +22,8 @@ function Brands({ searchQuery, onNavigate }: Props) {
   const [valuation, setValuation] = useState<any>(null);
   const [currency, setCurrency] = useState("USD");
   const [loading, setLoading] = useState(false);
+  const [dolarData, setDolarData] = useState<any>(null);
+  const [searchQuery, setSearchQuery] = useState(""); // 👈 movido acá
 
   const filteredBrands = brands.filter(brand =>
     brand.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -30,6 +32,15 @@ function Brands({ searchQuery, onNavigate }: Props) {
   const filteredModels = models.filter(model =>
     model.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  useEffect(() => {
+    if (currency === "ARS" && showPrices) {
+      fetch("https://api.bluelytics.com.ar/v2/latest")
+        .then(res => res.json())
+        .then(data => setDolarData(data))
+        .catch(err => console.error(err));
+    }
+  }, [currency, showPrices]);
 
   useEffect(() => {
     fetch("https://argautos.com/api/v1/brands")
@@ -111,6 +122,13 @@ function Brands({ searchQuery, onNavigate }: Props) {
             ARS
           </button>
         </div>
+        {currency === "ARS" && dolarData && (
+          <div className="alert alert-secondary mt-3 small">
+            <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
+            Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
+            Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
+          </div>
+        )}
       </div>
     );
   }
@@ -125,10 +143,7 @@ function Brands({ searchQuery, onNavigate }: Props) {
               <div
                 className="card p-2 text-center"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  onNavigate();
-                  navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`);
-                }}
+                onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`)}
               >
                 {v.name}
               </div>
@@ -152,10 +167,7 @@ function Brands({ searchQuery, onNavigate }: Props) {
                 <div
                   className="card p-2 text-center"
                   style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    onNavigate();
-                    navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`);
-                  }}
+                  onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`)}
                 >
                   <img
                     src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop"
@@ -172,8 +184,17 @@ function Brands({ searchQuery, onNavigate }: Props) {
     );
   }
 
+  // Vista de marcas — acá va el buscador
   return (
     <div className="container my-5">
+      <Form.Control
+        type="text"
+        placeholder="Buscar marca..."
+        value={searchQuery}
+        onChange={(e) => {setSearchQuery(e.target.value)}}
+        className="mb-4"
+        style={{ maxWidth: "300px" }}
+      />
       <div className="row">
         {filteredBrands.length === 0 ? (
           <p className="text-muted">No se encontraron marcas.</p>
@@ -183,10 +204,7 @@ function Brands({ searchQuery, onNavigate }: Props) {
               <div
                 className="card p-2 text-center"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  onNavigate();
-                  navigate(`?brand=${brand.name}&brandId=${brand.id}`);
-                }}
+                onClick={() => navigate(`?brand=${brand.name}&brandId=${brand.id}`)}
               >
                 <div className="card p-3 d-flex flex-column align-items-center">
                   <img

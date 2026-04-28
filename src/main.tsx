@@ -1,40 +1,40 @@
-import { StrictMode, useState } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { BrowserRouter, Link, Routes, Route, NavLink } from 'react-router-dom'
 import './index.css'
 import Brands from './Brands';
+import PriceExplorer from './PriceExplorer.tsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-
   return (
     <BrowserRouter>
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">AutoPrecios</Navbar.Brand>
-          <Form.Control
-            type="text"
-            placeholder="Buscar marca o modelo..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ maxWidth: "300px" }}
-          />
+          <Navbar.Toggle aria-controls="navbar-nav" />
+          <Navbar.Collapse id="navbar-nav">
+            <Nav className="me-auto ms-3">
+              <Nav.Link as={NavLink} to="/" end>Marcas</Nav.Link>
+              <Nav.Link as={NavLink} to="/explorador">Explorador por precio</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
 
       <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
         <div className="flex-grow-1">
-          <Brands searchQuery={searchQuery} onNavigate={() => setSearchQuery("")} />
+          <Routes>
+            <Route path="/" element={<Brands />} />
+            <Route path="/explorador" element={<PriceExplorer />} />
+          </Routes>
         </div>
         <footer>
-          <p>
-            Todas las marcas y logotipos pertenecen a sus respectivos dueños.
-            Este sitio es solo para fines demostrativos.
-          </p>
+          <p>Todas las marcas y logotipos pertenecen a sus respectivos dueños. Este sitio es solo para fines demostrativos.</p>
         </footer>
       </div>
     </BrowserRouter>
