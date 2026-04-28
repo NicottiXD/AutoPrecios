@@ -157,6 +157,14 @@ function Brands() {
   if (selectedBrand) {
     return (
       <div className="container my-5">
+        <Form.Control
+        type="text"
+        placeholder="Buscar modelo..."
+        value={searchQuery}
+        onChange={(e) => {setSearchQuery(e.target.value)}}
+        className="mb-4"
+        style={{ maxWidth: "300px" }}
+      />
         <h2 className="my-5">Modelos de {selectedBrand}</h2>
         <div className="row">
           {filteredModels.length === 0 ? (
@@ -184,7 +192,6 @@ function Brands() {
     );
   }
 
-  // Vista de marcas — acá va el buscador
   return (
     <div className="container my-5">
       <Form.Control
@@ -204,7 +211,10 @@ function Brands() {
               <div
                 className="card p-2 text-center"
                 style={{ cursor: "pointer" }}
-                onClick={() => navigate(`?brand=${brand.name}&brandId=${brand.id}`)}
+                onClick={() => {
+                  navigate(`?brand=${brand.name}&brandId=${brand.id}`);
+                  setSearchQuery(""); 
+                }}
               >
                 <div className="card p-3 d-flex flex-column align-items-center">
                   <img
