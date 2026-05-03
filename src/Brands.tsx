@@ -213,7 +213,6 @@ function Brands() {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   navigate(`?brand=${brand.name}&brandId=${brand.id}`);
-                  setSearchQuery(""); 
                 }}
               >
                 <div className="card p-3 d-flex flex-column align-items-center">
