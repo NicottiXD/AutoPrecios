@@ -43,6 +43,7 @@ function Brands() {
   }, [currency, showPrices]);
 
   useEffect(() => {
+    setSearchQuery(""); // Limpiar búsqueda al cargar las marcas
     fetch("https://argautos.com/api/v1/brands")
       .then(res => res.json())
       .then(data => setBrands(data.data))
@@ -52,6 +53,7 @@ function Brands() {
   useEffect(() => {
     if (selectedBrandId) {
       setLoading(true);
+      setSearchQuery(""); // Limpiar búsqueda al cambiar de marca
       fetch(`https://argautos.com/api/v1/brands/${selectedBrandId}/models`)
         .then(res => res.json())
         .then(data => setModels(data.data))
@@ -157,9 +159,9 @@ function Brands() {
   if (selectedBrand) {
     return (
       <div className="container my-5">
-        <Form.Control
+         <Form.Control
         type="text"
-        placeholder="Buscar modelo..."
+        placeholder="Buscar marca..."
         value={searchQuery}
         onChange={(e) => {setSearchQuery(e.target.value)}}
         className="mb-4"
