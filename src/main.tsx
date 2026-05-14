@@ -10,6 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
             <Nav className="me-auto ms-3">
               <Nav.Link as={NavLink} to="/" end>Marcas</Nav.Link>
               <Nav.Link as={NavLink} to="/explorador">Explorador por precio</Nav.Link>
+
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -31,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Brands />} />
             <Route path="/explorador" element={<PriceExplorer />} />
+
           </Routes>
         </div>
         <footer>
