@@ -337,8 +337,17 @@ function Brands() {
                     src={`/Modelos/${selectedBrand}/${model.name}/${model.name}_1.jpg`}
                     alt={model.name}
                     className="img-fluid mb-2"
+                    style={{ width: "100%", height: "160px", objectFit: "cover" }}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+                      const img = e.target as HTMLImageElement;
+                      const base = `/Modelos/${selectedBrand}/${model.name}/${model.name}_1`;
+                      if (img.src.endsWith(".jpg")) {
+                        img.src = base + ".png";
+                      } else if (img.src.endsWith(".png")) {
+                        img.src = base + ".webp";
+                      } else {
+                        img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+                      }
                     }}
                   />
                   {model.name}
@@ -355,7 +364,7 @@ function Brands() {
                       </div>
                     ) : null;
                   })()}
-                  
+
                 </div>
               </div>
             ))
