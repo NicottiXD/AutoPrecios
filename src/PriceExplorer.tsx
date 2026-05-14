@@ -12,11 +12,25 @@ function PriceExplorer() {
 
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
+  const [fuentes, setFuentes] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/fuentes.json")
+      .then(r => r.json())
+      .then(setFuentes);
+  }, []);
+
+   const getFuente = (marca: string, modelo: string) =>
+    fuentes.find(f => f.marca === marca && f.modelo === modelo);
+
+
   // 🔹 fetch
   const fetchCars = async (reset = false) => {
     if (loading) return;
 
     setLoading(true);
+
+    
 
     try {
       const res = await fetch(
@@ -131,11 +145,35 @@ function PriceExplorer() {
 
             <div className="card p-2 mb-3">
               <img
-                src={`/Marcas/${car.brand}.png`}
-                alt={car.brand}
-                style={{ height: "40px", objectFit: "contain" }}
-
+                src={`/Modelos/${car.brand}/${car.model}/${car.model}_1.jpg`}
+                alt={car.name}
+                className="img-fluid mb-2"
+                style={{ marginLeft: "25%", width: "50%", height: "100%", objectFit: "cover" }}
+                onError={(e) => {
+                  const img = e.target as HTMLImageElement;
+                  const base = `/Modelos/${car.brand}/${car.model}/${car.model}_1`;
+                  if (img.src.endsWith(".jpg")) {
+                    img.src = base + ".png";
+                  } else if (img.src.endsWith(".png")) {
+                    img.src = base + ".webp";
+                  } else {
+                    img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+                  }
+                }}
               />
+              {(() => {
+                    const f = getFuente(car.brand, car.model);
+                    return f ? (
+                      <div style={{ fontSize: "0.65rem", color: "#999", marginTop: "4px" }}>
+                        Foto:{" "}
+                        <a href={f.url_fuente} target="_blank" rel="noopener noreferrer"
+                          style={{ color: "#999" }}
+                          onClick={e => e.stopPropagation()}>
+                          {new URL(f.url_fuente).hostname}
+                        </a>
+                      </div>
+                    ) : null;
+                  })()}
               <h6>
                 {car.brand} {car.model}
               </h6>
