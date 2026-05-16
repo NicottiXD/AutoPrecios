@@ -337,7 +337,7 @@ function Brands() {
                     src={`/Modelos/${selectedBrand}/${model.name}/${model.name}_1.jpg`}
                     alt={model.name}
                     className="img-fluid mb-2"
-                    style={{ width: "100%", height: "160px", objectFit: "cover" }}
+                    style={{ width: "100%", height: "200px", objectFit: "cover" }}
                     onError={(e) => {
                       const img = e.target as HTMLImageElement;
                       const base = `/Modelos/${selectedBrand}/${model.name}/${model.name}_1`;
