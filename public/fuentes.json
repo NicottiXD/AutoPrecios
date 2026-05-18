@@ -3859,5 +3859,806 @@
     "url_fuente": "https://www.capitalone.com/cars/new-2026-toyota-crown/platinum-sedan-in-fort-lauderdale-fl",
     "titulo_fuente": "New 2026 Toyota Crown Platinum Sedan For Sale in Fort Lauderdale, FL ...",
     "fecha": "2026-05-15 20:29:10"
+  },
+  {
+    "marca": "PORSCHE",
+    "modelo": "CAYMAN 718",
+    "archivo": "imagenes_autos\\PORSCHE\\CAYMAN 718\\CAYMAN 718_1.jpg",
+    "url_imagen": "https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_1290x726/dam/pnr/2021/Products/718-Cayman-GT4-RS/769_003_highres.jpeg/jcr:content/769_003_highres.jpeg",
+    "url_fuente": "https://newsroom.porsche.com/en/2021/products/porsche-718-cayman-gt4-rs-la-auto-show-26459.html",
+    "titulo_fuente": "The new Porsche 718 Cayman GT4 RS - Porsche Newsroom",
+    "fecha": "2026-05-16 16:37:30"
+  },
+  {
+    "marca": "PORSCHE",
+    "modelo": "MACAN",
+    "archivo": "imagenes_autos\\PORSCHE\\MACAN\\MACAN_1.webp",
+    "url_imagen": "https://pictures.porsche.com/rtt/iris?COSY-EU-100-1711coMvsi60AAt5FwcmBEgA4qP8iBUDxPE3Cb9pNXkBuNYdMGF4tl3U0%25z8rMHIspbWvanYb%255y%25oq%25vSTmjMXD4qAZeoNBPUSfUx4RmHlCgI7ZB4x7e2HtpQDcFGIxXYnfurE005yPew9W9CvNzxvK8GXoq1XB0r6FObLpEwRuT0TpDx7e2HXnX1UzQK7zibsqYSN35yPewlo1CvNzxKjYGXoq1Seqr6FObT5SwRuT0st4x7Jv5c0jQvpjs78xkj5Vb2rEUA6efcRHv",
+    "url_fuente": "https://configurator.porsche.com/pt-BR/model/95BBV1/group/26026",
+    "titulo_fuente": "Macan S (2025) | Porsche Car Configurator",
+    "fecha": "2026-05-16 16:37:38"
+  },
+  {
+    "marca": "PORSCHE",
+    "modelo": "PANAMERA",
+    "archivo": "imagenes_autos\\PORSCHE\\PANAMERA\\PANAMERA_1.jpg",
+    "url_imagen": "https://cdn.motor1.com/images/mgl/Kb7eqM/s1/2025-porsche-panamera-turbo-s-e-hybrid.jpg",
+    "url_fuente": "https://it.motor1.com/news/727109/porsche-panamera-turbo-s-hybrid-2024/",
+    "titulo_fuente": "Nasce la Porsche Panamera più potente di sempre",
+    "fecha": "2026-05-16 16:37:45"
+  },
+  {
+    "marca": "PORSCHE",
+    "modelo": "SPYDER 718",
+    "archivo": "imagenes_autos\\PORSCHE\\SPYDER 718\\SPYDER 718_1.jpg",
+    "url_imagen": "https://i.gaw.to/content/photos/44/42/444214-porsche-718-spyder-2020-pour-les-puristes.jpeg",
+    "url_fuente": "https://www.guideautoweb.com/articles/57245/porsche-718-spyder-2020-pour-les-puristes/",
+    "titulo_fuente": "Porsche 718 Spyder 2020 : pour les puristes - Guide Auto",
+    "fecha": "2026-05-16 16:37:54"
+  },
+  {
+    "marca": "PORSCHE",
+    "modelo": "TAYCAN (ELECTRICO)",
+    "archivo": "imagenes_autos\\PORSCHE\\TAYCAN (ELECTRICO)\\TAYCAN (ELECTRICO)_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2019/09/porsche-taycan-turbo-s-2019-delantera.jpg",
+    "url_fuente": "https://www.megautos.com/porsche-taycan/",
+    "titulo_fuente": "Taycan, el primer Porsche eléctrico - Mega Autos",
+    "fecha": "2026-05-16 16:38:03"
+  },
+  {
+    "marca": "RAM",
+    "modelo": "1500 PICK - UP",
+    "archivo": "imagenes_autos\\RAM\\1500 PICK - UP\\1500 PICK - UP_1.jpg",
+    "url_imagen": "https://www.automotorpro.com/wp-content/uploads/sites/2/2022-ram-1500-00.jpg",
+    "url_fuente": "https://www.automotorpro.com/test-driving-iconic-pickup-truck-ram-1500",
+    "titulo_fuente": "Test driving the iconic pickup truck Ram 1500 - AutomotorPro.com",
+    "fecha": "2026-05-16 16:38:12"
+  },
+  {
+    "marca": "RAM",
+    "modelo": "2500 PICK - UP",
+    "archivo": "imagenes_autos\\RAM\\2500 PICK - UP\\2500 PICK - UP_1.jpg",
+    "url_imagen": "https://www.motortrend.com/uploads/2023/09/010-2024-Ram-2500-HD-front-view.jpg",
+    "url_fuente": "https://www.motortrend.com/cars/ram/2500/2024",
+    "titulo_fuente": "2024 Ram 2500 Review: Expert Insights, Pricing, and Trims",
+    "fecha": "2026-05-16 16:38:20"
+  },
+  {
+    "marca": "RAM",
+    "modelo": "DAKOTA PICK - UP",
+    "archivo": "imagenes_autos\\RAM\\DAKOTA PICK - UP\\DAKOTA PICK - UP_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2020/05/Ram-Dakota-pick-up-mediana-1.jpg",
+    "url_fuente": "https://www.megautos.com/futura-ram-dakota-pick-up/",
+    "titulo_fuente": "Una señal de la nueva Dakota (de RAM) - Mega Autos",
+    "fecha": "2026-05-16 16:38:28"
+  },
+  {
+    "marca": "RAM",
+    "modelo": "RAMPAGE PICK -UP",
+    "archivo": "imagenes_autos\\RAM\\RAMPAGE PICK -UP\\RAMPAGE PICK -UP_1.jpg",
+    "url_imagen": "https://sf2.sportauto.fr/wp-content/uploads/sportauto/2025/11/ram-rampage-2025-nouveau-pick-up-premium-marche-europe-images-6.jpg",
+    "url_fuente": "https://www.sportauto.fr/info-nouveautes-produits/ram-rampage-2025-nouveau-pick-up-premium-marche-europe-images-442570.html",
+    "titulo_fuente": "RAM Rampage (2025) : un nouveau pick-up à l'assaut de l'Europe",
+    "fecha": "2026-05-16 16:38:37"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "ALASKAN PICK - UP",
+    "archivo": "imagenes_autos\\RENAULT\\ALASKAN PICK - UP\\ALASKAN PICK - UP_1.jpg",
+    "url_imagen": "https://car-images.bauersecure.com/pagefiles/31349/renaultalaskan1.jpg",
+    "url_fuente": "https://www.carmagazine.co.uk/car-news/first-official-pictures/renault/meet-the-renault-alaskan---the-french-firms-first-pick-up/",
+    "titulo_fuente": "Meet the Renault Alaskan - the French firm's first pick-up | CAR Magazine",
+    "fecha": "2026-05-16 16:38:46"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "ARKANA E-TECH",
+    "archivo": "imagenes_autos\\RENAULT\\ARKANA E-TECH\\ARKANA E-TECH_1.jpg",
+    "url_imagen": "https://www.planetcarsz.com/img/carros/2022/06/renault-arkana-e-tech-engineered-2022-01-20220605155055-1600x1068.jpg",
+    "url_fuente": "https://www.planetcarsz.com/carros/renault-arkana-e-tech-engineered-2022",
+    "titulo_fuente": "2022 - RENAULT ARKANA E-TECH ENGINEERED | Fabricante RENAULT | PlanetCarsZ",
+    "fecha": "2026-05-16 16:38:56"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "BOREAL",
+    "archivo": "imagenes_autos\\RENAULT\\BOREAL\\BOREAL_1.jpg",
+    "url_imagen": "https://www.16valvulas.com.ar/wp-content/uploads/2025/07/Renault-Boreal-2.jpg",
+    "url_fuente": "https://www.16valvulas.com.ar/renault-boreal-asi-es-el-nuevo-c-suv-que-llegara-a-argentina-a-principios-de-2026/",
+    "titulo_fuente": "Renault Boreal: así es el nuevo C-SUV que llegará a Argentina a ...",
+    "fecha": "2026-05-16 16:39:04"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "CAPTUR",
+    "archivo": "imagenes_autos\\RENAULT\\CAPTUR\\CAPTUR_1.jpg",
+    "url_imagen": "https://mediacloud.carbuyer.co.uk/image/private/s--n50f7_Zj--/v1583764293/carbuyer/2020/02/1-all-new-renault-captur-iconic-33.jpg",
+    "url_fuente": "https://www.carbuyer.co.uk/renault/captur/170386/renault-captur-suv-review",
+    "titulo_fuente": "Renault Captur SUV review | Carbuyer",
+    "fecha": "2026-05-16 16:39:11"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "CLIO",
+    "archivo": "imagenes_autos\\RENAULT\\CLIO\\CLIO_1.jpg",
+    "url_imagen": "https://media.autoexpress.co.uk/image/private/s--iSDyFM-F--/v1605874711/autoexpress/2020/11/Renault%20Clio%20hybrid%20.jpg",
+    "url_fuente": "https://www.autoexpress.co.uk/renault/clio/94998/new-2020-renault-clio-prices-specs-and-powertrains",
+    "titulo_fuente": "New 2020 Renault Clio: prices, specs and powertrains | Auto Express",
+    "fecha": "2026-05-16 16:39:19"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "CLIO MIO",
+    "archivo": "imagenes_autos\\RENAULT\\CLIO MIO\\CLIO MIO_1.webp",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/publicaciones-imagenes/Large/renault/clio-mio/ar/RT_PU_8420fa2e3060482b85aa1a9114fc94eb.webp",
+    "url_fuente": "https://www.autocosmos.com.ar/auto/usado/renault/clio-mio/3p-autenthique-pack-look/e73eee183b924488b4e0586e99314939",
+    "titulo_fuente": "Renault Clio Mio 3P Autenthique Pack Look usado (2013) color Gris ...",
+    "fecha": "2026-05-16 16:39:27"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "CLIO WORK",
+    "archivo": "imagenes_autos\\RENAULT\\CLIO WORK\\CLIO WORK_1.jpg",
+    "url_imagen": "https://acnews.blob.core.windows.net/imgnews/large/NAZ_8992dc346a534f8eb78e385895b4da18.jpg",
+    "url_fuente": "https://noticias.autocosmos.com.ar/2015/05/28/nuevo-renault-clio-work-el-utilitario-mas-economico-de-argentina",
+    "titulo_fuente": "Nuevo Renault Clio Work, el utilitario más económico de Argentina",
+    "fecha": "2026-05-16 16:39:35"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER",
+    "archivo": "imagenes_autos\\RENAULT\\DUSTER\\DUSTER_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/l/RT_V_68eb7bc22ae44262b55f9a7ab74cf01f.jpg",
+    "url_fuente": "https://noticias.autocosmos.com.ar/2025/06/24/la-nueva-generacion-del-renault-duster-ya-esta-en-nuestra-region",
+    "titulo_fuente": "La nueva generación del Renault Duster ya está en nuestra región",
+    "fecha": "2026-05-16 16:39:43"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER OROCH PICK - UP",
+    "archivo": "imagenes_autos\\RENAULT\\DUSTER OROCH PICK - UP\\DUSTER OROCH PICK - UP_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_afae1f8474b94eb3b65f9a8ff35124ad.jpg",
+    "url_fuente": "https://www.autocosmos.com.pe/catalogo/pickup/renault/duster-oroch",
+    "titulo_fuente": "Catálogo autos nuevos pick up de Renault Duster Oroch, disponibles en Perú",
+    "fecha": "2026-05-16 16:39:50"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "FLUENCE",
+    "archivo": "imagenes_autos\\RENAULT\\FLUENCE\\FLUENCE_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/RENAULT-Fluence-4166_53.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/renault-fluence-2009.html",
+    "titulo_fuente": "RENAULT Fluence Specs, Performance & Photos - 2009, 2010, 2011, 2012 ...",
+    "fecha": "2026-05-16 16:39:57"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KANGOO",
+    "archivo": "imagenes_autos\\RENAULT\\KANGOO\\KANGOO_1.jpg",
+    "url_imagen": "https://carwow-de-wp-1.imgix.net/Renault-Kangoo-2021-1-1.jpg?auto=format&cs=tinysrgb&fit=clip&ixlib=rb-1.1.0&q=60&w=1366",
+    "url_fuente": "https://www.carwow.de/renault/kangoo",
+    "titulo_fuente": "Renault Kangoo: Preis, Motoren, Ausstattungen und Alternativen | carwow.de",
+    "fecha": "2026-05-16 16:40:05"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KARDIAN",
+    "archivo": "imagenes_autos\\RENAULT\\KARDIAN\\KARDIAN_1.jpg",
+    "url_imagen": "https://cdn.motor1.com/images/mgl/3WnnQp/s1/renault-kardian-evolution-configurador.jpg",
+    "url_fuente": "https://fr.motor1.com/news/713701/nouvelle-renault-kardian-version-base/",
+    "titulo_fuente": "Nouveau Renault Kardian (2024) : voici à quoi ressemble la version de base",
+    "fecha": "2026-05-16 16:40:27"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KOLEOS",
+    "archivo": "imagenes_autos\\RENAULT\\KOLEOS\\KOLEOS_1.jpg",
+    "url_imagen": "https://www.discoverauto.com.au/wp-content/uploads/2022/11/2023-Renault-Koleos-7-scaled.jpeg",
+    "url_fuente": "https://www.discoverauto.com.au/car-news/2023-renault-koleos-upgraded-with-new-features/",
+    "titulo_fuente": "2023 Renault Koleos Upgraded with New Features | DiscoverAuto",
+    "fecha": "2026-05-16 16:40:37"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KWID",
+    "archivo": "imagenes_autos\\RENAULT\\KWID\\KWID_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/l/RT_V_10741a5538cc4106835033f1ff9007f0.jpg",
+    "url_fuente": "https://galerias.autocosmos.com.mx/2022/07/11/renault-kwid-2023-a-prueba",
+    "titulo_fuente": "Renault Kwid 2023 a prueba - Autocosmos.com",
+    "fecha": "2026-05-16 16:40:44"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KWID E-TECH",
+    "archivo": "imagenes_autos\\RENAULT\\KWID E-TECH\\KWID E-TECH_1.webp",
+    "url_imagen": "https://acnews.blob.core.windows.net/imgnews/paragraph/NPAZ_ef85db4d30f3401bab327caf50b33b02.webp",
+    "url_fuente": "https://noticias.autocosmos.com.co/2026/05/13/renault-4-jp4x4-concept-el-buggy-electrico-4x4-inspirado-en-el-clasico-r4",
+    "titulo_fuente": "Renault 4 JP4x4 Concept: el buggy eléctrico 4x4 inspirado en el clásico R4",
+    "fecha": "2026-05-16 16:40:52"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "LATITUDE",
+    "archivo": "imagenes_autos\\RENAULT\\LATITUDE\\LATITUDE_1.jpg",
+    "url_imagen": "https://autotras.com/images/2254/renault-latitude-auto.jpg",
+    "url_fuente": "https://autotras.com/renault/renault-latitude-auto",
+    "titulo_fuente": "Renault Latitude Photos and Specs. Photo: Renault Latitude auto and 24 ...",
+    "fecha": "2026-05-16 16:41:01"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "LOGAN",
+    "archivo": "imagenes_autos\\RENAULT\\LOGAN\\LOGAN_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_1d48ff4ee6734d83b7e212fd8570d14b.jpg",
+    "url_fuente": "https://www.autocosmos.com.ar/catalogo/2021/renault/logan",
+    "titulo_fuente": "Renault Logan - Información 2021",
+    "fecha": "2026-05-16 16:41:09"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "MASTER",
+    "archivo": "imagenes_autos\\RENAULT\\MASTER\\MASTER_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2022/02/Renault-Master-2023.jpg",
+    "url_fuente": "https://www.megautos.com/renault-master-2023/renault-master-2023-2/",
+    "titulo_fuente": "Renault-Master-2023 - Mega Autos",
+    "fecha": "2026-05-16 16:41:17"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "MEGANE E-TECH",
+    "archivo": "imagenes_autos\\RENAULT\\MEGANE E-TECH\\MEGANE E-TECH_1.jpg",
+    "url_imagen": "https://i.gaw.to/content/photos/54/58/545880-renault-megane-e-tech-electrique-amenez-en-ici-aussi.jpg",
+    "url_fuente": "https://www.guideautoweb.com/articles/68113/renault-megane-e-tech-electrique-amenez-en-ici-aussi/",
+    "titulo_fuente": "Renault Mégane E-Tech électrique : amenez-en ici aussi! - Guide Auto",
+    "fecha": "2026-05-16 16:41:26"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "MEGANE III",
+    "archivo": "imagenes_autos\\RENAULT\\MEGANE III\\MEGANE III_1.jpg",
+    "url_imagen": "http://www.blogman.ro/wp-content/uploads/2015/06/Renault-Megane-III-fata.jpg",
+    "url_fuente": "http://blogman.ro/auto-second-hand-renault-megane-iii/",
+    "titulo_fuente": "Review auto second hand - Renault Megane III - Blogman.ro",
+    "fecha": "2026-05-16 16:41:36"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SANDERO",
+    "archivo": "imagenes_autos\\RENAULT\\SANDERO\\SANDERO_1.jpg",
+    "url_imagen": "https://www.carrosnors.com.br/wp-content/uploads/2020/12/Sandero-2021-capa.jpg",
+    "url_fuente": "https://www.carrosnors.com.br/renault-sandero-2021/",
+    "titulo_fuente": "Renault Sandero 2021: Preço, Fotos, Consumo e Versões » Carros RS",
+    "fecha": "2026-05-16 16:41:44"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SANDERO STEPWAY",
+    "archivo": "imagenes_autos\\RENAULT\\SANDERO STEPWAY\\SANDERO STEPWAY_1.jpg",
+    "url_imagen": "https://storage.googleapis.com/carmuv-development.appspot.com/1/2022/11/nota-stepway-cab-3.jpg",
+    "url_fuente": "https://blog.carmuv.com.ar/renault-sandero-stepway-las-novedades-de-la-edicion-c-a-b/",
+    "titulo_fuente": "Renault Sandero Stepway, las novedades de la edición C.A.B. - Noticias ...",
+    "fecha": "2026-05-16 16:41:52"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SYMBOL",
+    "archivo": "imagenes_autos\\RENAULT\\SYMBOL\\SYMBOL_1.jpg",
+    "url_imagen": "https://www.autosonline.cl/images/stories/Renault/new-symbol/exterior/renault-new-symbol-imagen-27.jpg",
+    "url_fuente": "https://www.autosonline.cl/autos-nuevos/renault/new-symbol/",
+    "titulo_fuente": "Renault New Symbol » Cotiza precios venta Autos Nuevos 2022 Chile ...",
+    "fecha": "2026-05-16 16:42:00"
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "SWM G01",
+    "archivo": "imagenes_autos\\SHINERAY\\SWM G01\\SWM G01_1.jpg",
+    "url_imagen": "https://carnewschina.com/wp-content/uploads/2018/04/swm-01-1.jpg",
+    "url_fuente": "https://carnewschina.com/2018/04/02/brilliance-shineray-swm-g01-unveiled-in-italy/",
+    "titulo_fuente": "Brilliance Shineray SWM G01 Unveiled In... Italy",
+    "fecha": "2026-05-16 16:42:09"
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "T 30",
+    "archivo": "imagenes_autos\\SHINERAY\\T 30\\T 30_1.jpg",
+    "url_imagen": "https://www.motornorte.com.ar/wp-content/uploads/2022/12/shineray-T30-camion.jpg",
+    "url_fuente": "https://www.motornorte.com.ar/shineray-t30/",
+    "titulo_fuente": "Shineray T30 C/SIMPLE CHASIS con DUALES p/2 Ton - MOTORNORTE S.R.L.",
+    "fecha": "2026-05-16 16:42:17"
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "T 32",
+    "archivo": "imagenes_autos\\SHINERAY\\T 32\\T 32_1.jpg",
+    "url_imagen": "https://cidautos.com/wp-content/uploads/2025/03/4848-DSC07811P1-1024x1024.jpg",
+    "url_fuente": "https://cidautos.com/vehiculo/shineray-t-32-mini-truck-doble-cabina/",
+    "titulo_fuente": "Shineray T-32 Mini Truck Doble Cabina 2025 | Cid Autos",
+    "fecha": "2026-05-16 16:42:27"
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "X 30",
+    "archivo": "imagenes_autos\\SHINERAY\\X 30\\X 30_1.jpg",
+    "url_imagen": "https://static2.aastatic.com.ar/files/variants/1200/cf1d78ef2f17463d8d1bdd767476855b.jpg",
+    "url_fuente": "https://www.agroads.com.ar/detalle.asp?clasi=864914",
+    "titulo_fuente": "Shineray X30 Furgon Full ABS + EBD 107hp 2plc año 2019 - Agroads",
+    "fecha": "2026-05-16 16:42:35"
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "X7",
+    "archivo": "imagenes_autos\\SHINERAY\\X7\\X7_1.jpg",
+    "url_imagen": "https://www.shineray.com.ar/templates/yootheme/cache/e5/perfil-3-4-portada-ejemplo-e5a94aec.jpeg",
+    "url_fuente": "https://www.shineray.com.ar/index.php/vehiculos/suv-swm-x7",
+    "titulo_fuente": "Shineray Argentina | Vehículos utilitarios y de pasajeros - SWM X7",
+    "fecha": "2026-05-16 16:42:42"
+  },
+  {
+    "marca": "SKYWELL",
+    "modelo": "ET5",
+    "archivo": "imagenes_autos\\SKYWELL\\ET5\\ET5_1.jpg",
+    "url_imagen": "https://english.onlinekhabar.com/wp-content/uploads/2024/04/image-86.jpg",
+    "url_fuente": "https://english.onlinekhabar.com/skywell-et5-electric-suv.html",
+    "titulo_fuente": "Skywell ET5: Electric SUV with an impressive 620km range launched in ...",
+    "fecha": "2026-05-16 16:42:53"
+  },
+  {
+    "marca": "SMART",
+    "modelo": "FORFOUR",
+    "archivo": "imagenes_autos\\SMART\\FORFOUR\\FORFOUR_1.jpg",
+    "url_imagen": "https://media.drivingelectric.com/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1597770298/drivingelectric/2018-10/smart-forfour-eq-ev_01.jpg",
+    "url_fuente": "https://www.drivingelectric.com/smart/forfour-hatchback/530/smart-eq-forfour-review/prices-specs",
+    "titulo_fuente": "Smart Forfour : Prices & Specs | DrivingElectric",
+    "fecha": "2026-05-16 16:43:02"
+  },
+  {
+    "marca": "SMART",
+    "modelo": "FORTWO",
+    "archivo": "imagenes_autos\\SMART\\FORTWO\\FORTWO_1.jpg",
+    "url_imagen": "https://www.autoscout24.nl/cms-content-assets/dVOaj6MutWswtIOEj9LZj-25266dc6cf29d4eb6b9f6820113c7f1a-smart-fortwo-l-02-1100.jpg",
+    "url_fuente": "https://www.autoscout24.nl/auto/smart/smart-fortwo/",
+    "titulo_fuente": "Smart Fortwo - Informatie, prijzen, alternatieven",
+    "fecha": "2026-05-16 16:43:11"
+  },
+  {
+    "marca": "SOUEAST",
+    "modelo": "DX 3",
+    "archivo": "imagenes_autos\\SOUEAST\\DX 3\\DX 3_1.jpg",
+    "url_imagen": "https://www.auto-plus.tn/assets/modules/newcars/soueast/dx3/couverture/soueast_dx3.jpg",
+    "url_fuente": "https://www.auto-plus.tn/les-voitures-neuves/soueast/dx3",
+    "titulo_fuente": "Prix Soueast DX3 à partir de 82900 DT : les finitions Disponibles",
+    "fecha": "2026-05-16 16:43:21"
+  },
+  {
+    "marca": "SSANGYONG",
+    "modelo": "ACTYON",
+    "archivo": "imagenes_autos\\SSANGYONG\\ACTYON\\ACTYON_1.jpg",
+    "url_imagen": "https://www.autocentrum.pl/ac-file/gallery-photo/56629901f80f0a96351cd60e/ssangyong-actyon-2007-12.jpg",
+    "url_fuente": "https://www.autocentrum.pl/galerie/prasowe/ssangyong-actyon-2007/",
+    "titulo_fuente": "Ssangyong Actyon 2007 - Galerie prasowe - Galeria • AutoCentrum.pl",
+    "fecha": "2026-05-16 16:43:31"
+  },
+  {
+    "marca": "SSANGYONG",
+    "modelo": "KORANDO",
+    "archivo": "imagenes_autos\\SSANGYONG\\KORANDO\\KORANDO_1.jpg",
+    "url_imagen": "https://www.autoscout24.it/cms-content-assets/59Jyj8MrqMkZ5eBr3rULUz-c12704543b33087986b38af8239c6235-ssangyong-korando-side-1100.jpeg",
+    "url_fuente": "https://www.autoscout24.it/auto/ssangyong/ssangyong-korando/",
+    "titulo_fuente": "Ssangyong Korando: dimensioni, interni, motori, prezzi e concorrenti ...",
+    "fecha": "2026-05-16 16:43:40"
+  },
+  {
+    "marca": "SSANGYONG",
+    "modelo": "KYRON",
+    "archivo": "imagenes_autos\\SSANGYONG\\KYRON\\KYRON_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/SSANGYONG-Kyron-586_14.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/ssangyong-kyron-2004.html",
+    "titulo_fuente": "SSANGYONG Kyron Specs, Performance & Photos - 2004, 2005, 2006, 2007 ...",
+    "fecha": "2026-05-16 16:43:47"
+  },
+  {
+    "marca": "SSANGYONG",
+    "modelo": "STAVIC",
+    "archivo": "imagenes_autos\\SSANGYONG\\STAVIC\\STAVIC_1.jpg",
+    "url_imagen": "https://cf.autodeft2.pw/uploads/images/2018/Ssangyong/Ssangyong%20Stavic/69352290-2019-ssangyong-turismo-mpv-2.jpg",
+    "url_fuente": "https://www.autodeft.com/defthint/2018-ssangyong-stavic-big-mpv-receives-facelift",
+    "titulo_fuente": "Ssangyong Stavic Facelift หน้าใหม่…..พ่อบ้านใจใหญ่แห่งแดนกิมจิ ...",
+    "fecha": "2026-05-16 16:43:56"
+  },
+  {
+    "marca": "SUBARU",
+    "modelo": "CROSSTREK",
+    "archivo": "imagenes_autos\\SUBARU\\CROSSTREK\\CROSSTREK_1.jpg",
+    "url_imagen": "https://autonxt.net/wp-content/uploads/2025/01/2026-Subaru-Crosstrek-Hybrid11-2048x1229.jpg",
+    "url_fuente": "https://autonxt.net/2026-subaru-crosstrek-hybrid-first-look/",
+    "titulo_fuente": "2026 Subaru Crosstrek Hybrid: First Look - autoNXT.net",
+    "fecha": "2026-05-16 16:44:06"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "ETIOS",
+    "archivo": "imagenes_autos\\TOYOTA\\ETIOS\\ETIOS_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2022/02/Toyota-Etios-Aibo-delantera.jpg",
+    "url_fuente": "https://www.megautos.com/toyota-etios-aibo/",
+    "titulo_fuente": "Toyota Etios Aibo, el utilitario del hatchback - Mega Autos",
+    "fecha": "2026-05-16 16:44:16"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "ETIOS CROSS",
+    "archivo": "imagenes_autos\\TOYOTA\\ETIOS CROSS\\ETIOS CROSS_1.jpg",
+    "url_imagen": "https://bharathautos.com/wp-content/uploads/2014/02/toyota-etios-cross-2014-auto-expo-front.jpg",
+    "url_fuente": "https://bharathautos.com/2014-auto-expo-toyota-etios-cross-revealed-bookings-open.html",
+    "titulo_fuente": "2014 Auto Expo - Toyota Etios Cross Revealed, Bookings open!",
+    "fecha": "2026-05-16 16:44:24"
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "ALTIMA",
+    "archivo": "imagenes_autos\\NISSAN\\ALTIMA\\ALTIMA_1.jpg",
+    "url_imagen": "https://images.caricos.com/n/nissan/2023_nissan_altima/images/2560x1440/2023_nissan_altima_12_2560x1440.jpg",
+    "url_fuente": "https://www.caricos.com/cars/n/nissan/2023_nissan_altima/images/12.html",
+    "titulo_fuente": "Nissan Altima | 2023MY | Front Three-Quarter",
+    "fecha": "2026-05-18 10:20:14"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HIACE",
+    "archivo": "imagenes_autos\\TOYOTA\\HIACE\\HIACE_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_c74a98c21a2a4721b9bc67fb8642970a.jpg",
+    "url_fuente": "https://www.autocosmos.cr/catalogo/segmentos/toyota/hiace",
+    "titulo_fuente": "Catálogo autos nuevos de Toyota Hiace, disponibles en Costa Rica",
+    "fecha": "2026-05-18 10:20:54"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HILUX PICK - UP",
+    "archivo": "imagenes_autos\\TOYOTA\\HILUX PICK - UP\\HILUX PICK - UP_1.jpg",
+    "url_imagen": "https://media.toyota.co.uk/wp-content/uploads/sites/5/2023/11/2023_HILUX_HYBRID_48V_MAIN_01-scaled.jpg",
+    "url_fuente": "https://media.toyota.co.uk/new-hilux-hybrid-48v-expands-toyotas-legendary-pick-up-range/",
+    "titulo_fuente": "New Hilux Hybrid 48V expands Toyota's legendary pick-up range - Toyota ...",
+    "fecha": "2026-05-18 10:21:04"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HILUX PICK - UP COVER",
+    "archivo": "imagenes_autos\\TOYOTA\\HILUX PICK - UP COVER\\HILUX PICK - UP COVER_1.jpg",
+    "url_imagen": "https://image.made-in-china.com/2f0j00EWpkUnrdhTqO/BESTWYLL-Pickup-Truck-Bed-Manual-Box-Retractable-Tonneau-Cover-for-2015-Toyota-Hilux-Revo-Sr5-J-Deck-With-Front-Fence-K46A.jpg",
+    "url_fuente": "https://bestwyll.en.made-in-china.com/product/ynvpFDQkrcWO/China-BESTWYLL-Pickup-Truck-Bed-Manual-Box-Retractable-Tonneau-Cover-for-2015-Toyota-Hilux-Revo-Sr5-J-Deck-With-Front-Fence-K46A.html",
+    "titulo_fuente": "BESTWYLL Pickup Truck Bed Manual Box Retractable Tonneau Cover for 2015 ...",
+    "fecha": "2026-05-18 10:21:12"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HILUX SW4",
+    "archivo": "imagenes_autos\\TOYOTA\\HILUX SW4\\HILUX SW4_1.webp",
+    "url_imagen": "https://motorprime.com.br/wp-content/uploads/2025/04/toyota-hilux-sw4-srx-platinum-2025-2-680d90823720e.webp",
+    "url_fuente": "https://motorprime.com.br/quanto-custa-a-toyota-hilux-sw4-srx-platinum-2025-preco-e-diferenciais/",
+    "titulo_fuente": "Quanto Custa a Toyota Hilux SW4 SRX Platinum 2025? Preço e Diferenciais",
+    "fecha": "2026-05-18 10:21:19"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "INNOVA",
+    "archivo": "imagenes_autos\\TOYOTA\\INNOVA\\INNOVA_1.jpg",
+    "url_imagen": "https://paultan.org/image/2022/09/2022-Toyota-Innova-update-official-feat-1.jpg",
+    "url_fuente": "https://paultan.org/2022/09/08/2022-toyota-innova-updated-in-malaysia/2022-toyota-innova-update-official-feat-1/",
+    "titulo_fuente": "2022 Toyota Innova update official-feat-1 - Paul Tan's Automotive News",
+    "fecha": "2026-05-18 10:21:28"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "PRIUS",
+    "archivo": "imagenes_autos\\TOYOTA\\PRIUS\\PRIUS_1.jpg",
+    "url_imagen": "https://s3.amazonaws.com/images.gearjunkie.com/uploads/2022/12/2023ToyotaPriusPaulEisenstein-2-1.jpg",
+    "url_fuente": "https://toyota.udlvirtual.edu.pe/view/2023-toyota-prius-limited-full-specs-features-and-price-carbuzz.html",
+    "titulo_fuente": "2023 Toyota Prius Limited Full Specs Features And Price Carbuzz ...",
+    "fecha": "2026-05-18 10:21:44"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "RAV - 4",
+    "archivo": "imagenes_autos\\TOYOTA\\RAV - 4\\RAV - 4_1.jpg",
+    "url_imagen": "https://www.motortrend.com/files/67085deec30a8c000841b88a/1-2025-toyota-rav4-front-view.jpg",
+    "url_fuente": "https://www.motortrend.com/cars/toyota/rav4/2025",
+    "titulo_fuente": "2025 Toyota RAV4 Review: Expert Insights, Pricing, and Trims",
+    "fecha": "2026-05-18 10:21:51"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "YARIS",
+    "archivo": "imagenes_autos\\TOYOTA\\YARIS\\YARIS_1.jpg",
+    "url_imagen": "https://m.atcdn.co.uk/vms/media/w1920/f091a007b2a84bb3a3fe5c8cb1b5b739.jpg",
+    "url_fuente": "https://www.autotrader.co.uk/cars/uk/middlesbrough/toyota/yaris-cross",
+    "titulo_fuente": "Toyota Yaris Cross used cars for sale in Middlesbrough | AutoTrader UK",
+    "fecha": "2026-05-18 10:22:00"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "YARIS CROSS",
+    "archivo": "imagenes_autos\\TOYOTA\\YARIS CROSS\\YARIS CROSS_1.jpg",
+    "url_imagen": "https://scene7.toyota.eu/is/image/toyotaeurope/TOY_MULTICAR_II_2024_TME_IMG_YARIS_CROSS_GR-SPORT_0009_v1-1?qlt=80&wid=1600&resMode=sharp2&fit=constrain",
+    "url_fuente": "https://www.toyota.co.uk/new-cars/yaris-cross?gad_source=1&gad_campaignid=21101327249",
+    "titulo_fuente": "Yaris Cross | Compact SUV | Toyota UK",
+    "fecha": "2026-05-18 10:22:09"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "AMAROK PICK - UP",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\AMAROK PICK - UP\\AMAROK PICK - UP_1.jpg",
+    "url_imagen": "https://smgmedia.blob.core.windows.net/images/111827/1920/volkswagen-amarok-pick-up-diesel-7331336ba7c9.jpg",
+    "url_fuente": "https://www.thecarspecialists.com/vehicle/volkswagen-amarok-dc-v6-tdi-highline-4motion-no-vat-20-alloys-hseats-full-leather-rcamera-smart-phone-link-in-sheffield-8c3f5fef-a04e-4987-adb9-4768634e8e5f",
+    "titulo_fuente": "Volkswagen Amarok | The Car Specialists | South Yorkshire",
+    "fecha": "2026-05-18 10:22:21"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "BORA",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\BORA\\BORA_1.jpg",
+    "url_imagen": "http://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Bora-1457_21.jpg",
+    "url_fuente": "http://www.autoevolution.com/cars/volkswagen-bora-1998.html",
+    "titulo_fuente": "VOLKSWAGEN Bora - 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 ...",
+    "fecha": "2026-05-18 10:22:29"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "CROSSFOX",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\CROSSFOX\\CROSSFOX_1.jpg",
+    "url_imagen": "https://topworldauto.com/photos/94/e0/carros-volkswagen-crossfox_85a4e.jpg",
+    "url_fuente": "https://topworldauto.com/cars/volkswagen/volkswagen-crossfox/photos.html",
+    "titulo_fuente": "TopWorldAuto >> Photos of Volkswagen CrossFox - photo galleries",
+    "fecha": "2026-05-18 10:22:38"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "FOX",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\FOX\\FOX_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Fox-684_14.jpeg",
+    "url_fuente": "https://www.autoevolution.com/cars/volkswagen-fox-2005.html",
+    "titulo_fuente": "VOLKSWAGEN Fox Specs, Performance & Photos - 2005, 2006, 2007, 2008 ...",
+    "fecha": "2026-05-18 10:22:45"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "GOL",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\GOL\\GOL_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Gol-5462_22.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/volkswagen-gol-2014.html",
+    "titulo_fuente": "VOLKSWAGEN Gol specs & photos - 2014, 2015, 2016, 2017, 2018, 2019 ...",
+    "fecha": "2026-05-18 10:22:52"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "GOL COUNTRY",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\GOL COUNTRY\\GOL COUNTRY_1.jpg",
+    "url_imagen": "https://acs2.blob.core.windows.net/imgcatalogo/l/P_6eab5bcb647a4355b4d1e5f51d7c55ca.jpg",
+    "url_fuente": "http://www.autocosmos.com.ar/catalogo/2013/volkswagen/gol-country",
+    "titulo_fuente": "Autos - Volkswagen - Información Gol Country",
+    "fecha": "2026-05-18 10:23:00"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "GOLF",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\GOLF\\GOLF_1.jpg",
+    "url_imagen": "https://mediacloud.carbuyer.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1706025860/carbuyer/2024/01/2024%20Volkswagen%20Golf.jpg",
+    "url_fuente": "https://www.carbuyer.co.uk/volkswagen/golf/305305/new-volkswagen-golf-hatchback-hero-arrives-with-updated-interior-engines-and",
+    "titulo_fuente": "New Volkswagen Golf - updated hatchback lands with £27,065 price tag ...",
+    "fecha": "2026-05-18 10:23:08"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "GOL TREND",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\GOL TREND\\GOL TREND_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/l/RT_V_2103cf5ea8894b65a193bfddd1bca03f.jpg",
+    "url_fuente": "https://noticias.autocosmos.com.ar/2013/03/18/volkswagen-presenta-el-nuevo-gol-trend-3-puertas-en-argentina",
+    "titulo_fuente": "Volkswagen presenta el nuevo Gol Trend 3 puertas en Argentina",
+    "fecha": "2026-05-18 10:23:24"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "NEW BEETLE",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\NEW BEETLE\\NEW BEETLE_1.jpg",
+    "url_imagen": "https://images.caradisiac.com/logos-ref/modele/modele--volkswagen-new-beetle/S8-modele--volkswagen-new-beetle.jpg",
+    "url_fuente": "https://www.caradisiac.com/modele--volkswagen-new-beetle/",
+    "titulo_fuente": "Volkswagen New Beetle : essais, fiabilité, avis, photos, prix",
+    "fecha": "2026-05-18 10:23:32"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "NIVUS",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\NIVUS\\NIVUS_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2025/02/Nuevo_Nivus-79.jpg",
+    "url_fuente": "https://www.megautos.com/nuevo-volkswagen-nivus-2025/",
+    "titulo_fuente": "Volkswagen lanzó el nuevo Nivus en Argentina - Mega Autos",
+    "fecha": "2026-05-18 10:23:40"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "PASSAT",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\PASSAT\\PASSAT_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Passat-6499_33.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/volkswagen-passat-2019.html",
+    "titulo_fuente": "Volkswagen Passat (Facelift) Specs, Performance & Photos - autoevolution",
+    "fecha": "2026-05-18 10:23:48"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "PASSAT CC",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\PASSAT CC\\PASSAT CC_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Passat-CC-3864_85.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/volkswagen-passat-cc-2009.html",
+    "titulo_fuente": "VOLKSWAGEN Passat CC Specs, Performance & Photos - 2009, 2010, 2011 ...",
+    "fecha": "2026-05-18 10:23:55"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "PASSAT VARIANT",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\PASSAT VARIANT\\PASSAT VARIANT_1.jpg",
+    "url_imagen": "https://s1.cdn.autoevolution.com/images/gallery/volkswagen-passat-variant-2023-7582_29.jpg",
+    "url_fuente": "https://www.autoevolution.com/cars/volkswagen-passat-variant-2023.html",
+    "titulo_fuente": "2024 Volkswagen Passat Variant Specs, Performance & Photos - autoevolution",
+    "fecha": "2026-05-18 10:24:03"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "POLO",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\POLO\\POLO_1.jpg",
+    "url_imagen": "https://cdni.autocarindia.com/ExtraImages/20210422110750_VW_polo_2021_front.jpg",
+    "url_fuente": "https://www.autocarindia.com/car-news/2021-volkswagen-polo-facelift-revealed-420581",
+    "titulo_fuente": "Sixth gen Volkswagen Polo facelift unveiled - Introduction | Autocar India",
+    "fecha": "2026-05-18 10:24:10"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SAVEIRO PICK - UP",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SAVEIRO PICK - UP\\SAVEIRO PICK - UP_1.jpg",
+    "url_imagen": "https://cdn.motor1.com/images/mgl/koBXjN/s1/vw-saveiro-extreme-cd.jpg",
+    "url_fuente": "https://es.motor1.com/news/683987/volkswagen-saveiro-2023-pickup-brasil/",
+    "titulo_fuente": "Volkswagen Saveiro 2024: el pequeño pick-up para Brasil se renueva",
+    "fecha": "2026-05-18 10:24:17"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SAVEIRO PICK - UP CROSS",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SAVEIRO PICK - UP CROSS\\SAVEIRO PICK - UP CROSS_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_e495469aca444ee19102e33113bc9069.jpg",
+    "url_fuente": "https://www.autocosmos.cl/catalogo/pickup/volkswagen/saveiro-cross",
+    "titulo_fuente": "Catálogo autos nuevos pick up de Volkswagen Saveiro Cross, disponibles ...",
+    "fecha": "2026-05-18 10:24:26"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SCIROCCO",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SCIROCCO\\SCIROCCO_1.jpg",
+    "url_imagen": "https://assets-eu-01.kc-usercontent.com/bb5aba31-d98c-0160-8548-418b3723c58e/b7a9a581-804e-4bec-825d-d4572b92f666/Volkswagen%20Scirocco%20(3).jpg?fm=jpg&auto=format",
+    "url_fuente": "https://heycar.co.uk/volkswagen/scirocco",
+    "titulo_fuente": "Volkswagen Scirocco Review | heycar",
+    "fecha": "2026-05-18 10:24:33"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SHARAN",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SHARAN\\SHARAN_1.jpg",
+    "url_imagen": "http://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGEN-Sharan-4344_64.jpg",
+    "url_fuente": "http://www.autoevolution.com/cars/volkswagen-sharan-2010.html",
+    "titulo_fuente": "VOLKSWAGEN Sharan - 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 ...",
+    "fecha": "2026-05-18 10:24:41"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SURAN",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SURAN\\SURAN_1.jpg",
+    "url_imagen": "https://www.autosonline.cl/images/stories/volkswagen/suran/exterior/volkswagen_suran_1.jpg",
+    "url_fuente": "https://www.autosonline.cl/noticias/volkswagen/volkswagen-presenta-la-nueva-suran.html",
+    "titulo_fuente": "Volkswagen presenta la Nueva Suran , Volkswagen » Cotiza precios venta ...",
+    "fecha": "2026-05-18 10:24:49"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SURAN CROSS",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\SURAN CROSS\\SURAN CROSS_1.jpg",
+    "url_imagen": "https://www.megautos.com/wp-content/uploads/2017/07/VW-Suran-Cross-delantera-1024x706.jpg",
+    "url_fuente": "https://www.megautos.com/fox-suran-cambios-argentina/vw-suran-cross-delantera/",
+    "titulo_fuente": "VW-Suran-Cross-delantera - Mega Autos",
+    "fecha": "2026-05-18 10:24:58"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TAOS",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\TAOS\\TAOS_1.jpg",
+    "url_imagen": "https://quatrorodas.abril.com.br/wp-content/uploads/2025/10/VW-Taos-Comfortline_Azul-Pacifico.jpg?quality=70&strip=info",
+    "url_fuente": "https://quatrorodas.abril.com.br/noticias/vw-taos-2026-novo-design-interior-equipamentos/",
+    "titulo_fuente": "O que há de novo no Volkswagen Taos 2026 e o que ficou devendo | Quatro ...",
+    "fecha": "2026-05-18 10:25:06"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TERA",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\TERA\\TERA_1.jpg",
+    "url_imagen": "https://media.ambito.com/p/08dcde44981caa98023559b9f9e6896a/adjuntos/239/imagenes/042/231/0042231903/volkswagen-tera-2025-09-1170x684jpg.jpg",
+    "url_fuente": "https://www.ambito.com/autos/volkswagen-presento-brasil-el-nuevo-tera-su-crossover-compacto-la-region-cuando-llega-la-argentina-n6119931",
+    "titulo_fuente": "Volkswagen presentó en Brasil el nuevo Tera, su crossover compacto para ...",
+    "fecha": "2026-05-18 10:25:21"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "THE BEETLE",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\THE BEETLE\\THE BEETLE_1.jpg",
+    "url_imagen": "https://static1.hotcarsimages.com/wordpress/wp-content/uploads/2022/11/vw-beetle-front.jpg",
+    "url_fuente": "https://www.hotcars.com/volkswagen-beetle-one-of-all-time-best-selling-cars/",
+    "titulo_fuente": "This Is Why The Volkswagen Beetle Is One Of The Best-Selling Cars Of ...",
+    "fecha": "2026-05-18 10:25:30"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TIGUAN",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\TIGUAN\\TIGUAN_1.jpg",
+    "url_imagen": "https://images.hgmsites.net/hug/2023-volkswagen-tiguan_100852509_h.jpg",
+    "url_fuente": "https://www.thecarconnection.com/overview/volkswagen_tiguan_2023",
+    "titulo_fuente": "2023 Volkswagen Tiguan (VW) Review, Ratings, Specs, Prices, and Photos ...",
+    "fecha": "2026-05-18 10:25:38"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TIGUAN ALLSPACE",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\TIGUAN ALLSPACE\\TIGUAN ALLSPACE_1.jpg",
+    "url_imagen": "https://uploads.vw-mms.de/system/production/images/vwn/036/795/images/5e5fc9aa428b278b08eedc58b10ede408e569a88/DB2021AU00494_web_1600.jpg?1656508899",
+    "url_fuente": "https://www.volkswagen-newsroom.com/en/tiguan-allspace-3528",
+    "titulo_fuente": "Tiguan Allspace | Volkswagen Newsroom",
+    "fecha": "2026-05-18 10:25:48"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TOUAREG",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\TOUAREG\\TOUAREG_1.jpg",
+    "url_imagen": "https://assets-eu-01.kc-usercontent.com/3b3d460e-c5ae-0195-6b86-3ac7fb9d52db/a26fd63a-1c2e-44da-8fed-1427e2ce3d4d/Volkswagen-Touareg-R.jpg?width=1750&fm=jpg&auto=format",
+    "url_fuente": "https://heycar.co.uk/blog/new-2023-vw-touareg",
+    "titulo_fuente": "New 2023 Volkswagen Touareg: price, specs and release date | heycar",
+    "fecha": "2026-05-18 10:25:55"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "UP!",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\UP!\\UP!_1.jpg",
+    "url_imagen": "https://assets-eu-01.kc-usercontent.com/3b3d460e-c5ae-0195-6b86-3ac7fb9d52db/5c1977bd-1799-4664-938d-8d84ae13b110/Volkswagen%20Up%20(10).jpg",
+    "url_fuente": "https://heycar.nl/auto/volkswagen/up",
+    "titulo_fuente": "Volkswagen Up review 2024 | heycar",
+    "fecha": "2026-05-18 10:26:03"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VENTO",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\VENTO\\VENTO_1.jpg",
+    "url_imagen": "https://auto-motor.at/Auto/Oldtimer/30-Jahre-VW-Vento/30-Jahre-VW-Vento-004.jpg?v=1669238402&version=full",
+    "url_fuente": "https://auto-motor.at/auto-fotos/Auto/Oldtimer/30-Jahre-VW-Vento/30-Jahre-VW-Vento-004.html",
+    "titulo_fuente": "Foto 30-Jahre-VW-Vento-004.jpg vom Artikel 30 Jahre VW Vento | auto ...",
+    "fecha": "2026-05-18 10:26:12"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VENTO VARIANT",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\VENTO VARIANT\\VENTO VARIANT_1.jpg",
+    "url_imagen": "https://acnews.blob.core.windows.net/imgnews/large/0_2141716918.jpg",
+    "url_fuente": "https://noticias.autocosmos.com.ar/2010/12/02/nuevo-vw-vento-variant-con-genes-del-renovado-adn--de-la-marca",
+    "titulo_fuente": "Nuevo VW Vento Variant: con genes del renovado ADN de la marca",
+    "fecha": "2026-05-18 10:26:20"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VIRTUS",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\VIRTUS\\VIRTUS_1.jpg",
+    "url_imagen": "https://quatrorodas.abril.com.br/wp-content/uploads/2024/05/1FLP3861-ABRE-VIRTUS-x-VERSA--e1742225425910.webp?w=1280&h=720&crop=1",
+    "url_fuente": "https://quatrorodas.abril.com.br/noticias/volkswagen-virtus-2025-passa-a-ter-vw-play-de-serie-veja-versoes-e-precos/",
+    "titulo_fuente": "Volkswagen Virtus 2025 passa a ter VW Play de série; veja versões e ...",
+    "fecha": "2026-05-18 10:26:28"
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VOYAGE",
+    "archivo": "imagenes_autos\\VOLKSWAGEN\\VOYAGE\\VOYAGE_1.jpg",
+    "url_imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_1fabeab199a34af2bff44e5b6847aea5.jpg",
+    "url_fuente": "https://www.autocosmos.cl/catalogo/segmentos/volkswagen/voyage",
+    "titulo_fuente": "Catálogo autos nuevos de Volkswagen Voyage, disponibles en Chile",
+    "fecha": "2026-05-18 10:26:36"
   }
 ]

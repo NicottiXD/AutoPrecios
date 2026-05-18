@@ -95,7 +95,7 @@ function Brands() {
 
   useEffect(() => {
     if (selectedVersionId) {
-      setLoading(true);
+     
       fetch(`https://argautos.com/api/v1/versions/${selectedVersionId}/valuations?currency=${currency}&format_price=true&relations=version,model,brand`)
         .then(res => res.json())
         .then(data => setValuation(data))
@@ -136,7 +136,7 @@ function Brands() {
   }
 
   // Vista historial
-  if (showPrices && showHistory) {
+  /*if (showPrices && showHistory) {
     return (
       <div className="container my-5">
         <div className="d-flex align-items-center gap-3 mb-4">
@@ -148,7 +148,7 @@ function Brands() {
           </h4>
         </div>
 
-        {/* Filtros */}
+        }
         <div className="row g-2 mb-4">
           <div className="col-6 col-md-3">
             <label className="form-label small">Desde</label>
@@ -183,7 +183,7 @@ function Brands() {
           </div>
         </div>
 
-        {/* Moneda */}
+       }
         <div className="mb-3 d-flex gap-2">
           <button
             className={`btn btn-sm ${currency === "USD" ? "btn-primary" : "btn-outline-primary"}`}
@@ -239,76 +239,71 @@ function Brands() {
         )}
       </div>
     );
-  }
+  }*/
 
   // Vista precios actuales
-  if (showPrices && valuation?.data) {
-    return (
-      <div className="container my-5">
-        <h4>
-          Precios - {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
-        </h4>
-        <div className="row mt-5">
-          {valuation.data.map((item: any) => (
-            <div key={item.id} className="col-6 col-md-3 mb-3">
-              <div className="card p-2 text-center">
-                <strong>{item.year === 0 ? "0km" : item.year}</strong>
-                <p>{item.price_formatted}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="my-2 d-flex gap-2 flex-wrap">
-          <button
-            className={`btn ${currency === "USD" ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => setCurrency("USD")}
-          >
-            USD
-          </button>
-          <button
-            className={`btn ${currency === "ARS" ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => setCurrency("ARS")}
-          >
-            ARS
-          </button>
-          <button
-            className="btn btn-outline-secondary"
-            onClick={() => setShowHistory(true)}
-          >
-            Ver historial de precios
-          </button>
-        </div>
-        {currency === "ARS" && dolarData && (
-          <div className="alert alert-secondary mt-3 small">
-            <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
-            Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
-            Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
-          </div>
-        )}
-      </div>
-    );
-  }
+  
 
   if (selectedModel) {
-    return (
-      <div className="container my-5">
-        <h2 className="my-5">Versiones de {selectedModel}</h2>
-        <div className="row">
-          {versions.map((v: any) => (
-            <div key={v.id} className="col-6 col-md-3 mb-3">
-              <div
-                className="card p-2 text-center"
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`)}
-              >
-                {v.name}
-              </div>
+  return (
+    <div className="container my-5">
+      <h2 className="my-5">Versiones de {selectedBrand+" "+selectedModel}</h2>
+      <div className="row">
+        {versions.map((v: any) => (
+          <div key={v.id} className="col-6 col-md-3 mb-3">
+            <div
+              className={`btn ${selectedVersionId === v.id ? "btn-dark" : "btn-outline-dark"}`}
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`)}
+            >
+              {v.name}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    );
-  }
+
+     
+      {showPrices && valuation?.data && (
+        <div>
+          <h4 className="mt-5">
+            Precios - {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
+          </h4>
+          <div className="row mt-3">
+            {valuation.data.map((item: any) => (
+              <div key={item.id} className="col-6 col-md-3 mb-3">
+                <div className="card p-2 text-center">
+                  <strong>{item.year === 0 ? "0km" : item.year}</strong>
+                  <p>{item.price_formatted}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="my-2 d-flex gap-2 flex-wrap">
+            <button
+              className={`btn ${currency === "USD" ? "btn-success" : "btn-outline-success"}`}
+              onClick={() => setCurrency("USD")}
+            >
+              USD
+            </button>
+            <button
+              className={`btn ${currency === "ARS" ? "btn-primary" : "btn-outline-primary"}`}
+              onClick={() => setCurrency("ARS")}
+            >
+              ARS
+            </button>
+          </div>
+          {currency === "ARS" && dolarData && (
+            <div className="alert alert-secondary mt-3 small">
+              <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
+              Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
+              Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
   if (selectedBrand) {
     return (
