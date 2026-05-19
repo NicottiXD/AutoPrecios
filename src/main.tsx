@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Aboutme from './AboutMe.tsx';
 
 
 
@@ -22,7 +23,7 @@ function App() {
             <Nav className="me-auto ms-3">
               <Nav.Link as={NavLink} to="/" end>Marcas</Nav.Link>
               <Nav.Link as={NavLink} to="/explorador">Explorador por precio</Nav.Link>
-
+              <Nav.Link as={NavLink} to="/AcercaDeMi">Acerca de mi</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -31,8 +32,9 @@ function App() {
       <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
         <div className="flex-grow-1">
           <Routes>
-            <Route path="/" element={<Brands />} />
+            <Route path="/brands" element={<Brands />} />
             <Route path="/explorador" element={<PriceExplorer />} />
+            <Route path="/acercademi" element={<Aboutme />} />
 
           </Routes>
         </div>
