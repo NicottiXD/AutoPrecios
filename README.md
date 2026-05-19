@@ -1,4 +1,4 @@
-<h1>Precio Auto ARG</h1>
+<h1>Auto Precio ARG</h1>
 
 <p>Pagina gratuita de consulta de valuaciones del mercado automotor argentino.</p>
 
