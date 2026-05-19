@@ -6,7 +6,7 @@
     <a href="https://auto-precios.vercel.app/">Pagina web</a>
 </p>
 
-##Descripción
+##Descripción<br>
 Aplicación web para consultar y explorar precios de autos en Argentina utilizando una API REST.
 Incluye búsqueda por marca/modelo, filtros dinámicos 
 y visualización responsive desarrollada con React y TypeScript.
