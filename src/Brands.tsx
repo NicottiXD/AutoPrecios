@@ -27,12 +27,12 @@ function Brands() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // --- Historial ---
-  const [showHistory, setShowHistory] = useState(false);
+ /*const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState<any>(null);
   const [historyFrom, setHistoryFrom] = useState("");
   const [historyTo, setHistoryTo] = useState("");
   const [historySource, setHistorySource] = useState("");
-  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyLoading, setHistoryLoading] = useState(false);*/
 
   const [fuentes, setFuentes] = useState<any[]>([]);
 
@@ -105,7 +105,7 @@ function Brands() {
   }, [selectedVersionId, currency]);
 
   // Fetch historial
-  useEffect(() => {
+  /*useEffect(() => {
     if (selectedVersionId && showHistory) {
       setHistoryLoading(true);
       const params = new URLSearchParams({
@@ -123,7 +123,7 @@ function Brands() {
         .catch(err => console.error(err))
         .finally(() => setHistoryLoading(false));
     }
-  }, [selectedVersionId, showHistory, currency, historyFrom, historyTo, historySource]);
+  }, [selectedVersionId, showHistory, currency, historyFrom, historyTo, historySource]);*/
 
   if (loading) {
     return (
