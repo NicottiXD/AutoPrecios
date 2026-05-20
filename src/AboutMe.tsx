@@ -7,7 +7,7 @@ function aboutme() {
                     <h2 className="mb-3">Sobre mí</h2>
 
                     <p className="text-muted">
-                        Hola, soy Nicolás, desarrollador frontend junior y estudiante
+                        Hola, soy Nicolás, desarrollador de software junior y estudiante
                         de Ingeniería en Sistemas en la UTN.
                         Esta aplicación fue desarrollada con React y consume una API
                         de precios de autos para consultar modelos y valores actualizados.
