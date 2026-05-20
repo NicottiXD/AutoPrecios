@@ -32,7 +32,7 @@ function App() {
       <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
         <div className="flex-grow-1">
           <Routes>
-            <Route path="/brands" element={<Brands />} />
+            <Route path="/" element={<Brands />} />
             <Route path="/explorador" element={<PriceExplorer />} />
             <Route path="/acercademi" element={<Aboutme />} />
 
