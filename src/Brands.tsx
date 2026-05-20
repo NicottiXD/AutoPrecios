@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react"; // 👈 agregado useRef
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 
@@ -25,14 +25,7 @@ function Brands() {
   const [loading, setLoading] = useState(false);
   const [dolarData, setDolarData] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("");
-
-  // --- Historial ---
-  /*const [showHistory, setShowHistory] = useState(false);
-   const [history, setHistory] = useState<any>(null);
-   const [historyFrom, setHistoryFrom] = useState("");
-   const [historyTo, setHistoryTo] = useState("");
-   const [historySource, setHistorySource] = useState("");
-   const [historyLoading, setHistoryLoading] = useState(false);*/
+  const valuationRef = useRef<HTMLDivElement>(null); // 👈 agregado ref
 
   const [fuentes, setFuentes] = useState<any[]>([]);
 
@@ -95,7 +88,6 @@ function Brands() {
 
   useEffect(() => {
     if (selectedVersionId) {
-
       fetch(`https://argautos.com/api/v1/versions/${selectedVersionId}/valuations?currency=${currency}&format_price=true&relations=version,model,brand`)
         .then(res => res.json())
         .then(data => setValuation(data))
@@ -104,26 +96,12 @@ function Brands() {
     }
   }, [selectedVersionId, currency]);
 
-  // Fetch historial
-  /*useEffect(() => {
-    if (selectedVersionId && showHistory) {
-      setHistoryLoading(true);
-      const params = new URLSearchParams({
-        history: "true",
-        currency,
-        format_price: "true",
-        relations: "version,model,brand",
-        ...(historyFrom && { from: historyFrom }),
-        ...(historyTo && { to: historyTo }),
-        ...(historySource && { source: historySource }),
-      });
-      fetch(`https://argautos.com/api/v1/versions/${selectedVersionId}/valuations?${params}`)
-        .then(res => res.json())
-        .then(data => setHistory(data))
-        .catch(err => console.error(err))
-        .finally(() => setHistoryLoading(false));
+  // 👈 nuevo useEffect para el scroll
+  useEffect(() => {
+    if (valuation?.data && valuationRef.current) {
+      valuationRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [selectedVersionId, showHistory, currency, historyFrom, historyTo, historySource]);*/
+  }, [valuation]);
 
   if (loading) {
     return (
@@ -135,115 +113,6 @@ function Brands() {
     );
   }
 
-  // Vista historial
-  /*if (showPrices && showHistory) {
-    return (
-      <div className="container my-5">
-        <div className="d-flex align-items-center gap-3 mb-4">
-          <button className="btn btn-outline-secondary btn-sm" onClick={() => setShowHistory(false)}>
-            ← Volver a precios
-          </button>
-          <h4 className="mb-0">
-            Historial — {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
-          </h4>
-        </div>
-
-        }
-        <div className="row g-2 mb-4">
-          <div className="col-6 col-md-3">
-            <label className="form-label small">Desde</label>
-            <input
-              type="date"
-              className="form-control form-control-sm"
-              value={historyFrom}
-              onChange={e => setHistoryFrom(e.target.value)}
-            />
-          </div>
-          <div className="col-6 col-md-3">
-            <label className="form-label small">Hasta</label>
-            <input
-              type="date"
-              className="form-control form-control-sm"
-              value={historyTo}
-              onChange={e => setHistoryTo(e.target.value)}
-            />
-          </div>
-          <div className="col-6 col-md-3">
-            <label className="form-label small">Fuente</label>
-            <select
-              className="form-select form-select-sm"
-              value={historySource}
-              onChange={e => setHistorySource(e.target.value)}
-            >
-              <option value="">Todas</option>
-              <option value="acara">ACARA</option>
-              <option value="infoauto">Infoauto</option>
-              <option value="cca">CCA</option>
-            </select>
-          </div>
-        </div>
-
-       }
-        <div className="mb-3 d-flex gap-2">
-          <button
-            className={`btn btn-sm ${currency === "USD" ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => setCurrency("USD")}
-          >
-            USD
-          </button>
-          <button
-            className={`btn btn-sm ${currency === "ARS" ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => setCurrency("ARS")}
-          >
-            ARS
-          </button>
-        </div>
-
-        {historyLoading ? (
-          <div className="d-flex justify-content-center my-4">
-            <div className="spinner-border spinner-border-sm" role="status" />
-          </div>
-        ) : history?.data?.length > 0 ? (
-          <div className="table-responsive">
-            <table className="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th>Fecha</th>
-                  <th>Año</th>
-                  <th>Precio</th>
-                  <th>Fuente</th>
-                </tr>
-              </thead>
-              <tbody>
-                {history.data.map((item: any, i: number) => (
-                  <tr key={i}>
-                    <td>{new Date(item.date).toLocaleDateString("es-AR")}</td>
-                    <td>{item.year === 0 ? "0km" : item.year}</td>
-                    <td>{item.price_formatted}</td>
-                    <td><span className="badge bg-secondary">{item.source}</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-muted">No hay datos para los filtros seleccionados.</p>
-        )}
-
-        {currency === "ARS" && dolarData && (
-          <div className="alert alert-secondary mt-3 small">
-            <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
-            Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
-            Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
-          </div>
-        )}
-      </div>
-    );
-  }*/
-
-  // Vista precios actuales
-
-
   if (selectedModel) {
     return (
       <div className="container my-5">
@@ -252,12 +121,11 @@ function Brands() {
           {versions.map((v: any) => (
             <div key={v.id} className="col-6 col-md-3 mb-3">
               <div
-                className={`btn ${selectedVersionId === v.id ? "btn-dark" : "btn-outline-dark"
-                  }`}
+                className={`btn ${selectedVersionId === v.id ? "btn-dark" : "btn-outline-dark"}`}
                 style={{
                   cursor: "pointer",
                   width: "100%",
-                  maxWidth:"200px",
+                  maxWidth: "200px",
                   minHeight: "80px",
                   display: "flex",
                   alignItems: "center",
@@ -276,9 +144,8 @@ function Brands() {
           ))}
         </div>
 
-
         {showPrices && valuation?.data && (
-          <div>
+          <div ref={valuationRef}> {/* 👈 ref aplicado acá */}
             <h4 className="mt-5">
               Precios - {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
             </h4>
@@ -373,7 +240,6 @@ function Brands() {
                       </div>
                     ) : null;
                   })()}
-
                 </div>
               </div>
             ))
@@ -422,4 +288,4 @@ function Brands() {
   );
 }
 
-export default Brands;
+export default Brands;  
