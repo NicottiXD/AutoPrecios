@@ -2,6 +2,29 @@ import { useEffect, useState, useRef } from "react"; // 👈 agregado useRef
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 
+// 👈 Caché simple en memoria (sobrevive entre montajes/re-renders, no entre recargas de página)
+const apiCache = new Map<string, any>();
+
+// 👈 Fetch con caché + reintento automático si la API responde 429
+async function cachedFetch(url: string, { retries = 2, retryDelayMs = 1500 } = {}) {
+  if (apiCache.has(url)) return apiCache.get(url);
+
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const res = await fetch(url);
+    if (res.status === 429) {
+      if (attempt < retries) {
+        await new Promise(r => setTimeout(r, retryDelayMs * (attempt + 1)));
+        continue;
+      }
+      throw new Error("429");
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    apiCache.set(url, data);
+    return data;
+  }
+  throw new Error("429");
+}
 
 type Brand = { id: number; name: string };
 type Model = { id: number; name: string };
@@ -25,14 +48,23 @@ function Brands() {
   const [loading, setLoading] = useState(false);
   const [dolarData, setDolarData] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [brandsError, setBrandsError] = useState<string | null>(null);
+  const [valuationError, setValuationError] = useState<string | null>(null);
   const valuationRef = useRef<HTMLDivElement>(null); // 👈 agregado ref
 
   const [fuentes, setFuentes] = useState<any[]>([]);
 
   useEffect(() => {
     fetch("/fuentes.json")
-      .then(r => r.json())
-      .then(setFuentes);
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(data => setFuentes(Array.isArray(data) ? data : []))
+      .catch(err => {
+        console.error(err);
+        setFuentes([]);
+      });
   }, []);
 
   const getFuente = (marca: string, modelo: string) =>
@@ -57,20 +89,32 @@ function Brands() {
 
   useEffect(() => {
     setSearchQuery("");
-    fetch("https://argautos.com/api/v1/brands")
-      .then(res => res.json())
-      .then(data => setBrands(data.data))
-      .catch(err => console.error(err));
+    cachedFetch("https://argautos.com/api/v1/brands")
+      .then(data => {
+        setBrands(Array.isArray(data?.data) ? data.data : []);
+        setBrandsError(null);
+      })
+      .catch(err => {
+        console.error(err);
+        setBrands([]);
+        setBrandsError(
+          err.message?.includes("429")
+            ? "El servidor está limitando las solicitudes (429). Probá de nuevo en un momento."
+            : "No se pudieron cargar las marcas. Intentá nuevamente."
+        );
+      });
   }, []);
 
   useEffect(() => {
     if (selectedBrandId) {
       setLoading(true);
       setSearchQuery("");
-      fetch(`https://argautos.com/api/v1/brands/${selectedBrandId}/models`)
-        .then(res => res.json())
-        .then(data => setModels(data.data))
-        .catch(err => console.error(err))
+      cachedFetch(`https://argautos.com/api/v1/brands/${selectedBrandId}/models`)
+        .then(data => setModels(Array.isArray(data?.data) ? data.data : []))
+        .catch(err => {
+          console.error(err);
+          setModels([]);
+        })
         .finally(() => setLoading(false));
     }
   }, [selectedBrandId]);
@@ -78,20 +122,33 @@ function Brands() {
   useEffect(() => {
     if (selectedModelId) {
       setLoading(true);
-      fetch(`https://argautos.com/api/v1/models/${selectedModelId}/versions`)
-        .then(res => res.json())
-        .then(data => setVersions(data.data))
-        .catch(err => console.error(err))
+      cachedFetch(`https://argautos.com/api/v1/models/${selectedModelId}/versions`)
+        .then(data => setVersions(Array.isArray(data?.data) ? data.data : []))
+        .catch(err => {
+          console.error(err);
+          setVersions([]);
+        })
         .finally(() => setLoading(false));
     }
   }, [selectedModelId]);
 
   useEffect(() => {
     if (selectedVersionId) {
-      fetch(`https://argautos.com/api/v1/versions/${selectedVersionId}/valuations?currency=${currency}&format_price=true&relations=version,model,brand`)
-        .then(res => res.json())
-        .then(data => setValuation(data))
-        .catch(err => console.error(err))
+      setLoading(true);
+      cachedFetch(`https://argautos.com/api/v1/versions/${selectedVersionId}/valuations`)
+        .then(data => {
+          setValuation(data);
+          setValuationError(null);
+        })
+        .catch(err => {
+          console.error(err);
+          setValuation(null);
+          setValuationError(
+            err.message?.includes("429")
+              ? "El servidor está limitando las solicitudes (429). Esperá unos segundos y volvé a clickear la versión."
+              : "No se pudieron cargar los precios para esta versión."
+          );
+        })
         .finally(() => setLoading(false));
     }
   }, [selectedVersionId, currency]);
@@ -162,20 +219,34 @@ function Brands() {
           ))}
         </div>
 
+        {showPrices && valuationError && (
+          <div className="alert alert-warning mt-4">{valuationError}</div>
+        )}
+
         {showPrices && valuation?.data && (
           <div ref={valuationRef}> {/* 👈 ref aplicado acá */}
             <h4 className="mt-5">
-              Precios - {valuation?.meta?.brand?.name} {valuation?.meta?.model?.name} {valuation?.meta?.version}
+              Precios - {selectedBrand} {selectedModel} {versions.find((v: any) => v.id === selectedVersionId)?.name}
             </h4>
             <div className="row mt-3">
-              {valuation.data.map((item: any) => (
-                <div key={item.id} className="col-6 col-md-3 mb-3">
-                  <div className="card p-2 text-center">
-                    <strong>{item.year === 0 ? "0km" : item.year}</strong>
-                    <p>{item.price_formatted}</p>
+              {valuation.data.map((item: any) => {
+                const rawPrice = Number(item.price);
+                const displayPrice =
+                  currency === "ARS" && dolarData
+                    ? rawPrice * dolarData.blue.value_avg
+                    : rawPrice;
+                return (
+                  <div key={item.id} className="col-6 col-md-3 mb-3">
+                    <div className="card p-2 text-center">
+                      <strong>{item.year === 0 ? "0km" : item.year}</strong>
+                      <p>
+                        {currency === "ARS" ? "$" : "US$"}{" "}
+                        {displayPrice.toLocaleString("es-AR", { maximumFractionDigits: 0 })}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <div className="my-2 d-flex gap-2 flex-wrap">
               <button
@@ -196,6 +267,11 @@ function Brands() {
                 <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
                 Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
                 Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
+              </div>
+            )}
+            {currency === "ARS" && !dolarData && (
+              <div className="alert alert-secondary mt-3 small">
+                Cargando cotización del dólar...
               </div>
             )}
           </div>
@@ -278,7 +354,9 @@ function Brands() {
         style={{ maxWidth: "300px" }}
       />
       <div className="row">
-        {filteredBrands.length === 0 ? (
+        {brandsError ? (
+          <p className="text-danger">{brandsError}</p>
+        ) : filteredBrands.length === 0 ? (
           <p className="text-muted">No se encontraron marcas.</p>
         ) : (
           filteredBrands.map((brand) => (
@@ -306,4 +384,4 @@ function Brands() {
   );
 }
 
-export default Brands;  
+export default Brands;
