@@ -117,6 +117,24 @@ function Brands() {
     return (
       <div className="container my-5">
         <h2 className="my-5">Versiones de {selectedBrand + " " + selectedModel}</h2>
+        <img
+                    src={`/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1.jpg`}
+                    alt={selectedModel}
+                    className="img-fluid mb-3"
+                    style={{ width: "40%", objectFit: "contain" }}
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement;
+                      const base = `/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1`;
+                      if (img.src.endsWith(".jpg")) {
+                        img.src = base + ".png";
+                      } else if (img.src.endsWith(".png")) {
+                        img.src = base + ".webp";
+                      } else {
+                        img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+                      }
+                    }}
+                  />
+        
         <div className="row">
           {versions.map((v: any) => (
             <div key={v.id} className="col-6 col-md-3 mb-3">
