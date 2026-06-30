@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ap-bg: #F5F6F8;
+  --ap-surface: #FFFFFF;
+  --ap-border: #DFE3EA;
+  --ap-primary: #1B2A4A;
+  --ap-accent: #E8A020;
+  --ap-text: #1C1F26;
+  --ap-muted: #6B7280;
+  --ap-radius: 10px;
+  --ap-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+  --ap-shadow-hover: 0 4px 16px rgba(0,0,0,0.11);
+  --ap-transition: 0.16s ease;
+}
+
+body {
+  background: var(--ap-bg) !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  color: var(--ap-text);
+}
+
+/* ─── Navbar ─── */
+.ap-navbar {
+  background: var(--ap-primary) !important;
+  border-bottom: 3px solid var(--ap-accent) !important;
+}
+.ap-navbar .navbar-brand {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  letter-spacing: 0.03em;
+}
+.ap-navbar .navbar-brand .ap-brand-accent {
+  color: var(--ap-accent);
+}
+.ap-navbar .nav-link {
+  color: rgba(255,255,255,0.65) !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: 6px;
+  transition: color var(--ap-transition), background var(--ap-transition);
+}
+.ap-navbar .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.1);
+}
+.ap-navbar .nav-link.active {
+  color: var(--ap-accent) !important;
+  background: transparent;
+}
+.ap-navbar .navbar-toggler {
+  border-color: rgba(255,255,255,0.3) !important;
+}
+.ap-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ─── Footer ─── */
+.ap-footer {
+  background: var(--ap-primary);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 1.1rem 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ─── Page container ─── */
+.ap-page {
+  padding: 2rem 0 3rem;
+}
+
+/* ─── Section title ─── */
+.ap-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ap-primary);
+  letter-spacing: 0.01em;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ─── Search input ─── */
+.ap-search {
+  border: 1.5px solid var(--ap-border) !important;
+  border-radius: var(--ap-radius) !important;
+  padding: 0.55rem 1rem !important;
+  font-size: 0.875rem !important;
+  background: var(--ap-surface) !important;
+  max-width: 300px;
+  box-shadow: none !important;
+  transition: border-color var(--ap-transition), box-shadow var(--ap-transition);
+}
+.ap-search:focus {
+  outline: none !important;
+  border-color: var(--ap-accent) !important;
+  box-shadow: 0 0 0 3px rgba(232,160,32,0.18) !important;
+}
+
+/* ─── Spinner ─── */
+.ap-spinner-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+}
+.ap-spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 3px solid var(--ap-border);
+  border-top-color: var(--ap-accent);
+  border-radius: 50%;
+  animation: ap-spin 0.7s linear infinite;
+}
+@keyframes ap-spin { to { transform: rotate(360deg); } }
+
+/* ─── Brand cards ─── */
+.ap-brand-card {
+  background: var(--ap-surface);
+  border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius);
+  box-shadow: var(--ap-shadow);
+  cursor: pointer;
+  transition: transform var(--ap-transition), box-shadow var(--ap-transition), border-color var(--ap-transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+.ap-brand-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ap-shadow-hover);
+  border-color: var(--ap-accent);
+}
+.ap-brand-logo-wrap {
+  padding: 1.4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.ap-brand-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ap-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 0.75rem 0.75rem;
+  text-align: center;
+}
+
+/* ─── Model cards ─── */
+.ap-model-card {
+  background: var(--ap-surface);
+  border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius);
+  box-shadow: var(--ap-shadow);
+  cursor: pointer;
+  transition: transform var(--ap-transition), box-shadow var(--ap-transition), border-color var(--ap-transition);
+  overflow: hidden;
+}
+.ap-model-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ap-shadow-hover);
+  border-color: var(--ap-accent);
+}
+.ap-model-card img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+}
+.ap-model-label {
+  padding: 0.6rem 0.8rem 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ap-text);
+}
+.ap-photo-credit {
+  font-size: 0.65rem;
+  color: var(--ap-muted);
+  padding: 0 0.8rem 0.65rem;
+}
+.ap-photo-credit a {
+  color: var(--ap-muted) !important;
+  text-decoration: none;
+}
+.ap-photo-credit a:hover { text-decoration: underline; }
+
+/* ─── Model hero (versions page) ─── */
+.ap-model-hero {
+  width: 100%;
+  max-width: 400px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: var(--ap-radius);
+  margin: 0 auto 1.75rem;
+  box-shadow: var(--ap-shadow);
+  display: block;
+}
+
+/* ─── Version buttons ─── */
+.ap-version-btn {
+  border: 1.5px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-text);
+  border-radius: var(--ap-radius);
+  padding: 0.7rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  width: 100%;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--ap-shadow);
+  transition: border-color var(--ap-transition), background var(--ap-transition), color var(--ap-transition);
+}
+.ap-version-btn:hover {
+  border-color: var(--ap-accent);
+  background: #FDFAF3;
+}
+.ap-version-active {
+  border-color: var(--ap-primary) !important;
+  background: var(--ap-primary) !important;
+  color: #fff !important;
+}
+
+/* ─── Prices ─── */
+.ap-prices-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ap-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.ap-price-card {
+  background: var(--ap-surface);
+  border: 1.5px solid var(--ap-border);
+  border-top: 3px solid var(--ap-accent);
+  border-radius: var(--ap-radius);
+  padding: 0.9rem 0.75rem;
+  text-align: center;
+  box-shadow: var(--ap-shadow);
+}
+.ap-price-year {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ap-primary);
+  display: block;
+}
+.ap-price-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ap-text);
+  margin: 0.2rem 0 0;
+}
+
+/* ─── Currency toggle ─── */
+.ap-currency-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.1rem;
+}
+.ap-currency-btn {
+  border: 1.5px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-muted);
+  border-radius: 999px;
+  padding: 0.35rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--ap-transition);
+  line-height: 1.6;
+}
+.ap-currency-btn:hover {
+  border-color: var(--ap-accent);
+  color: var(--ap-text);
+}
+.ap-usd-active {
+  background: #14532D !important;
+  border-color: #14532D !important;
+  color: #fff !important;
+}
+.ap-ars-active {
+  background: var(--ap-primary) !important;
+  border-color: var(--ap-primary) !important;
+  color: #fff !important;
+}
+
+/* ─── Dollar info ─── */
+.ap-dolar-alert {
+  background: #FBF4E0;
+  border: 1px solid #E8D090;
+  border-radius: var(--ap-radius);
+  padding: 0.7rem 1rem;
+  font-size: 0.82rem;
+  color: #7A5C00;
+  margin-top: 1rem;
+}
+
+/* ─── Explorer filter panel ─── */
+.ap-filter-panel {
+  background: var(--ap-surface);
+  border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius);
+  padding: 1.4rem 1.75rem;
+  box-shadow: var(--ap-shadow);
+  margin-bottom: 2.5rem;
+}
+.ap-filter-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ap-muted);
+  margin-bottom: 1rem;
+}
+.ap-range-inputs {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+.ap-range-input {
+  border: 1.5px solid var(--ap-border) !important;
+  border-radius: 8px !important;
+  padding: 0.45rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  background: var(--ap-bg) !important;
+  max-width: 130px;
+  box-shadow: none !important;
+  transition: border-color var(--ap-transition) !important;
+}
+.ap-range-input:focus {
+  border-color: var(--ap-accent) !important;
+  box-shadow: 0 0 0 3px rgba(232,160,32,0.18) !important;
+  outline: none !important;
+}
+.ap-range-sep {
+  color: var(--ap-muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.ap-range-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ap-primary);
+  margin-top: 0.75rem;
+}
+
+/* RC Slider overrides */
+.rc-slider-rail { background-color: var(--ap-border) !important; height: 5px !important; }
+.rc-slider-track { background-color: var(--ap-accent) !important; height: 5px !important; }
+.rc-slider-handle {
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: -6.5px !important;
+  border: 2px solid var(--ap-accent) !important;
+  background: var(--ap-surface) !important;
+  opacity: 1 !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12) !important;
+}
+.rc-slider-handle:hover,
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+  border-color: var(--ap-primary) !important;
+  box-shadow: 0 0 0 5px rgba(232,160,32,0.22) !important;
+}
+
+/* ─── Explorer car cards ─── */
+.ap-explorer-card {
+  background: var(--ap-surface);
+  border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius);
+  overflow: hidden;
+  box-shadow: var(--ap-shadow);
+  transition: transform var(--ap-transition), box-shadow var(--ap-transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ap-explorer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ap-shadow-hover);
+}
+.ap-explorer-card > img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+.ap-explorer-body {
+  padding: 0.875rem 1rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.ap-car-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ap-primary);
+  margin-bottom: 0.15rem;
+}
+.ap-car-version {
+  font-size: 0.78rem;
+  color: var(--ap-muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  flex: 1;
+}
+.ap-car-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ap-border);
+}
+.ap-car-year {
+  font-size: 0.78rem;
+  color: var(--ap-muted);
+  font-weight: 500;
+}
+.ap-car-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ap-accent);
+}
+
+/* ─── Empty / error states ─── */
+.ap-empty { color: var(--ap-muted); font-size: 0.9rem; }

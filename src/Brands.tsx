@@ -1,11 +1,8 @@
-import { useEffect, useState, useRef } from "react"; // 👈 agregado useRef
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
 
-// 👈 Caché simple en memoria (sobrevive entre montajes/re-renders, no entre recargas de página)
 const apiCache = new Map<string, any>();
 
-// 👈 Fetch con caché + reintento automático si la API responde 429
 async function cachedFetch(url: string, { retries = 2, retryDelayMs = 1500 } = {}) {
   if (apiCache.has(url)) return apiCache.get(url);
 
@@ -50,7 +47,7 @@ function Brands() {
   const [searchQuery, setSearchQuery] = useState("");
   const [brandsError, setBrandsError] = useState<string | null>(null);
   const [valuationError, setValuationError] = useState<string | null>(null);
-  const valuationRef = useRef<HTMLDivElement>(null); // 👈 agregado ref
+  const valuationRef = useRef<HTMLDivElement>(null);
 
   const [fuentes, setFuentes] = useState<any[]>([]);
 
@@ -151,9 +148,8 @@ function Brands() {
         })
         .finally(() => setLoading(false));
     }
-  }, [selectedVersionId, currency]);
+  }, [selectedVersionId]); // currency se excluye: la conversión es client-side, no necesita re-fetch
 
-  // 👈 nuevo useEffect para el scroll
   useEffect(() => {
     if (valuation?.data && valuationRef.current) {
       valuationRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -162,51 +158,67 @@ function Brands() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "200px" }}>
-        <div className="spinner-border" role="status">
+      <div className="ap-spinner-wrap">
+        <div className="ap-spinner" role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
       </div>
     );
   }
 
+  /* ── Versions page ── */
   if (selectedModel) {
     return (
-      <div className="container my-5">
-        <h2 className="my-5">Versiones de {selectedBrand + " " + selectedModel}</h2>
+      <div className="container ap-page">
+        {/* Breadcrumb */}
+        <p className="text-muted mb-1" style={{ fontSize: "0.8rem" }}>
+          <span
+            style={{ cursor: "pointer", color: "var(--ap-accent)" }}
+            onClick={() => navigate("/")}
+          >
+            Marcas
+          </span>
+          {" › "}
+          <span
+            style={{ cursor: "pointer", color: "var(--ap-accent)" }}
+            onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}`)}
+          >
+            {selectedBrand}
+          </span>
+          {" › "}
+          {selectedModel}
+        </p>
+
+        <h2 className="ap-section-title">
+          {selectedBrand} {selectedModel}
+        </h2>
+
         <img
-                    src={`/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1.jpg`}
-                    alt={selectedModel}
-                    className="img-fluid mb-3"
-                    style={{ width: "40%", objectFit: "contain" }}
-                    onError={(e) => {
-                      const img = e.target as HTMLImageElement;
-                      const base = `/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1`;
-                      if (img.src.endsWith(".jpg")) {
-                        img.src = base + ".png";
-                      } else if (img.src.endsWith(".png")) {
-                        img.src = base + ".webp";
-                      } else {
-                        img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
-                      }
-                    }}
-                  />
-        
-        <div className="row">
+          src={`/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1.jpg`}
+          alt={selectedModel}
+          className="ap-model-hero"
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            const base = `/Modelos/${selectedBrand}/${selectedModel}/${selectedModel}_1`;
+            if (img.src.endsWith(".jpg")) {
+              img.src = base + ".png";
+            } else if (img.src.endsWith(".png")) {
+              img.src = base + ".webp";
+            } else {
+              img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+            }
+          }}
+        />
+
+        <p className="ap-empty mb-3" style={{ fontSize: "0.8rem" }}>
+          Seleccioná una versión para ver los precios
+        </p>
+
+        <div className="row g-2">
           {versions.map((v: any) => (
-            <div key={v.id} className="col-6 col-md-3 mb-3">
+            <div key={v.id} className="col-6 col-md-3">
               <div
-                className={`btn ${selectedVersionId === v.id ? "btn-dark" : "btn-outline-dark"}`}
-                style={{
-                  cursor: "pointer",
-                  width: "100%",
-                  maxWidth: "200px",
-                  minHeight: "80px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textAlign: "center",
-                }}
+                className={`ap-version-btn${selectedVersionId === v.id ? " ap-version-active" : ""}`}
                 onClick={() =>
                   navigate(
                     `?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`
@@ -224,11 +236,12 @@ function Brands() {
         )}
 
         {showPrices && valuation?.data && (
-          <div ref={valuationRef}> {/* 👈 ref aplicado acá */}
-            <h4 className="mt-5">
-              Precios - {selectedBrand} {selectedModel} {versions.find((v: any) => v.id === selectedVersionId)?.name}
+          <div ref={valuationRef}>
+            <h4 className="ap-prices-title">
+              Precios — {versions.find((v: any) => v.id === selectedVersionId)?.name}
             </h4>
-            <div className="row mt-3">
+
+            <div className="row g-2 mt-1">
               {valuation.data.map((item: any) => {
                 const rawPrice = Number(item.price);
                 const displayPrice =
@@ -236,10 +249,12 @@ function Brands() {
                     ? rawPrice * dolarData.blue.value_avg
                     : rawPrice;
                 return (
-                  <div key={item.id} className="col-6 col-md-3 mb-3">
-                    <div className="card p-2 text-center">
-                      <strong>{item.year === 0 ? "0km" : item.year}</strong>
-                      <p>
+                  <div key={item.id} className="col-6 col-md-3">
+                    <div className="ap-price-card">
+                      <span className="ap-price-year">
+                        {item.year === 0 ? "0km" : item.year}
+                      </span>
+                      <p className="ap-price-value">
                         {currency === "ARS" ? "$" : "US$"}{" "}
                         {displayPrice.toLocaleString("es-AR", { maximumFractionDigits: 0 })}
                       </p>
@@ -248,31 +263,31 @@ function Brands() {
                 );
               })}
             </div>
-            <div className="my-2 d-flex gap-2 flex-wrap">
+
+            <div className="ap-currency-row">
               <button
-                className={`btn ${currency === "USD" ? "btn-success" : "btn-outline-success"}`}
+                className={`ap-currency-btn${currency === "USD" ? " ap-usd-active" : ""}`}
                 onClick={() => setCurrency("USD")}
               >
                 USD
               </button>
               <button
-                className={`btn ${currency === "ARS" ? "btn-primary" : "btn-outline-primary"}`}
+                className={`ap-currency-btn${currency === "ARS" ? " ap-ars-active" : ""}`}
                 onClick={() => setCurrency("ARS")}
               >
                 ARS
               </button>
             </div>
+
             {currency === "ARS" && dolarData && (
-              <div className="alert alert-secondary mt-3 small">
+              <div className="ap-dolar-alert">
                 <strong>Cotización del {new Date(dolarData.last_update).toLocaleDateString("es-AR")}:</strong>{" "}
                 Oficial: ${dolarData.oficial.value_avg.toLocaleString("es-AR")} |{" "}
                 Blue: ${dolarData.blue.value_avg.toLocaleString("es-AR")}
               </div>
             )}
             {currency === "ARS" && !dolarData && (
-              <div className="alert alert-secondary mt-3 small">
-                Cargando cotización del dólar...
-              </div>
+              <div className="ap-dolar-alert">Cargando cotización del dólar...</div>
             )}
           </div>
         )}
@@ -280,101 +295,115 @@ function Brands() {
     );
   }
 
+  /* ── Models page ── */
   if (selectedBrand) {
     return (
-      <div className="container my-5">
-        <Form.Control
+      <div className="container ap-page">
+        <p className="text-muted mb-1" style={{ fontSize: "0.8rem" }}>
+          <span
+            style={{ cursor: "pointer", color: "var(--ap-accent)" }}
+            onClick={() => navigate("/")}
+          >
+            Marcas
+          </span>
+          {" › "}
+          {selectedBrand}
+        </p>
+
+        <h2 className="ap-section-title">Modelos de {selectedBrand}</h2>
+
+        <input
           type="text"
           placeholder="Buscar modelo..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="mb-4"
-          style={{ maxWidth: "300px" }}
+          className="ap-search mb-4"
         />
-        <h2 className="my-5">Modelos de {selectedBrand}</h2>
-        <div className="row">
+
+        <div className="row g-3">
           {filteredModels.length === 0 ? (
-            <p className="text-muted">No se encontraron modelos.</p>
+            <p className="ap-empty">No se encontraron modelos.</p>
           ) : (
-            filteredModels.map((model) => (
-              <div key={model.id} className="col-6 col-md-3 mb-3">
-                <div
-                  className="card p-2 text-center"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`)}
-                >
-                  <img
-                    src={`/Modelos/${selectedBrand}/${model.name}/${model.name}_1.jpg`}
-                    alt={model.name}
-                    className="img-fluid mb-2"
-                    style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                    onError={(e) => {
-                      const img = e.target as HTMLImageElement;
-                      const base = `/Modelos/${selectedBrand}/${model.name}/${model.name}_1`;
-                      if (img.src.endsWith(".jpg")) {
-                        img.src = base + ".png";
-                      } else if (img.src.endsWith(".png")) {
-                        img.src = base + ".webp";
-                      } else {
-                        img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
-                      }
-                    }}
-                  />
-                  {model.name}
-                  {(() => {
-                    const f = getFuente(selectedBrand, model.name);
-                    return f ? (
-                      <div style={{ fontSize: "0.65rem", color: "#999", marginTop: "4px" }}>
+            filteredModels.map((model) => {
+              const f = getFuente(selectedBrand, model.name);
+              return (
+                <div key={model.id} className="col-6 col-md-3">
+                  <div
+                    className="ap-model-card"
+                    onClick={() =>
+                      navigate(`?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${model.name}&modelId=${model.id}`)
+                    }
+                  >
+                    <img
+                      src={`/Modelos/${selectedBrand}/${model.name}/${model.name}_1.jpg`}
+                      alt={model.name}
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        const base = `/Modelos/${selectedBrand}/${model.name}/${model.name}_1`;
+                        if (img.src.endsWith(".jpg")) {
+                          img.src = base + ".png";
+                        } else if (img.src.endsWith(".png")) {
+                          img.src = base + ".webp";
+                        } else {
+                          img.src = "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=300&fit=crop";
+                        }
+                      }}
+                    />
+                    <div className="ap-model-label">{model.name}</div>
+                    {f && (
+                      <div className="ap-photo-credit">
                         Foto:{" "}
-                        <a href={f.url_fuente} target="_blank" rel="noopener noreferrer"
-                          style={{ color: "#999" }}
-                          onClick={e => e.stopPropagation()}>
+                        <a
+                          href={f.url_fuente}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           {new URL(f.url_fuente).hostname}
                         </a>
                       </div>
-                    ) : null;
-                  })()}
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
     );
   }
 
+  /* ── Brands page ── */
   return (
-    <div className="container my-5">
-      <Form.Control
+    <div className="container ap-page">
+      <input
         type="text"
         placeholder="Buscar marca..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="mb-4"
-        style={{ maxWidth: "300px" }}
+        className="ap-search mb-4"
       />
-      <div className="row">
+
+      <div className="row g-3">
         {brandsError ? (
           <p className="text-danger">{brandsError}</p>
         ) : filteredBrands.length === 0 ? (
-          <p className="text-muted">No se encontraron marcas.</p>
+          <p className="ap-empty">No se encontraron marcas.</p>
         ) : (
           filteredBrands.map((brand) => (
-            <div key={brand.id} className="col-6 col-md-4 col-lg-3 mb-3">
+            <div key={brand.id} className="col-6 col-md-4 col-lg-3">
               <div
-                className="card p-2 text-center"
-                style={{ cursor: "pointer" }}
+                className="ap-brand-card"
                 onClick={() => navigate(`?brand=${brand.name}&brandId=${brand.id}`)}
               >
-                <div className="card p-3 d-flex flex-column align-items-center">
+                <div className="ap-brand-logo-wrap">
                   <img
                     src={`/Marcas/${brand.name}.png`}
                     alt={brand.name}
-                    className="img-fluid"
-                    style={{ objectFit: "contain", height: "80px", maxWidth: "100px" }}
+                    style={{ objectFit: "contain", height: "72px", maxWidth: "110px" }}
                   />
                 </div>
-                {brand.name}
+                <span className="ap-brand-name">{brand.name}</span>
               </div>
             </div>
           ))

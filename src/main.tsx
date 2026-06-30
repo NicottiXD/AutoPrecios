@@ -2,22 +2,23 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Link, Routes, Route, NavLink } from 'react-router-dom'
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './autoprecios.css';
 import Brands from './Brands';
 import PriceExplorer from './PriceExplorer.tsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Aboutme from './AboutMe.tsx';
 
-
-
 function App() {
   return (
     <BrowserRouter>
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg" className="ap-navbar">
         <Container>
-          <Navbar.Brand as={Link} to="/">AutoPrecios</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            Auto<span className="ap-brand-accent">Precios</span>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
             <Nav className="me-auto ms-3">
@@ -35,11 +36,12 @@ function App() {
             <Route path="/" element={<Brands />} />
             <Route path="/explorador" element={<PriceExplorer />} />
             <Route path="/acercademi" element={<Aboutme />} />
-
           </Routes>
         </div>
-        <footer>
-          <p>Todas las marcas y logotipos pertenecen a sus respectivos dueños. Este sitio es solo para fines demostrativos.</p>
+        <footer className="ap-footer">
+          <p className="mb-0">
+            Todas las marcas y logotipos pertenecen a sus respectivos dueños. Este sitio es solo para fines demostrativos.
+          </p>
         </footer>
       </div>
     </BrowserRouter>
