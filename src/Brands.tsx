@@ -2,25 +2,62 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const apiCache = new Map<string, any>();
+const pendingRequests = new Map<string, Promise<any>>();
 
-async function cachedFetch(url: string, { retries = 2, retryDelayMs = 1500 } = {}) {
+// La API sólo permite 3 requests por minuto en TOTAL (no por endpoint).
+// Esta cola global asegura que nunca se disparen más de 3 en la última
+// ventana de 60s, sin importar cuántos componentes/efectos pidan a la vez.
+const RATE_LIMIT = 3;
+const RATE_WINDOW_MS = 60_000;
+let requestTimestamps: number[] = [];
+let requestQueue: Promise<any> = Promise.resolve();
+
+function scheduleRequest<T>(fn: () => Promise<T>): Promise<T> {
+  const run = requestQueue.then(async () => {
+    // Espera hasta que haya lugar dentro de la ventana de 60s
+    while (true) {
+      const now = Date.now();
+      requestTimestamps = requestTimestamps.filter(t => now - t < RATE_WINDOW_MS);
+      if (requestTimestamps.length < RATE_LIMIT) {
+        requestTimestamps.push(now);
+        break;
+      }
+      const waitMs = RATE_WINDOW_MS - (now - requestTimestamps[0]) + 300; // margen de seguridad
+      await new Promise(r => setTimeout(r, waitMs));
+    }
+    return fn();
+  });
+
+  // Evita que un rechazo rompa la cadena de la cola para las siguientes llamadas
+  requestQueue = run.then(
+    () => undefined,
+    () => undefined
+  );
+
+  return run;
+}
+
+async function cachedFetch(url: string) {
   if (apiCache.has(url)) return apiCache.get(url);
 
-  for (let attempt = 0; attempt <= retries; attempt++) {
+  // Si ya hay una request en vuelo para esta misma URL (p. ej. por
+  // StrictMode duplicando efectos en dev), devolvemos esa misma promesa
+  // en vez de disparar una nueva.
+  if (pendingRequests.has(url)) return pendingRequests.get(url);
+
+  const promise = scheduleRequest(async () => {
     const res = await fetch(url);
-    if (res.status === 429) {
-      if (attempt < retries) {
-        await new Promise(r => setTimeout(r, retryDelayMs * (attempt + 1)));
-        continue;
-      }
-      throw new Error("429");
-    }
+    if (res.status === 429) throw new Error("429");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     apiCache.set(url, data);
     return data;
-  }
-  throw new Error("429");
+  }).finally(() => {
+    pendingRequests.delete(url);
+  });
+
+  pendingRequests.set(url, promise);
+  return promise;
 }
 
 type Brand = { id: number; name: string };
@@ -47,7 +84,7 @@ function Brands() {
   const [searchQuery, setSearchQuery] = useState("");
   const [brandsError, setBrandsError] = useState<string | null>(null);
   const [valuationError, setValuationError] = useState<string | null>(null);
-  const valuationRef = useRef<HTMLDivElement>(null);
+  const pricesTopRef = useRef<HTMLDivElement>(null);
 
   const [fuentes, setFuentes] = useState<any[]>([]);
 
@@ -151,10 +188,10 @@ function Brands() {
   }, [selectedVersionId]); // currency se excluye: la conversión es client-side, no necesita re-fetch
 
   useEffect(() => {
-    if (valuation?.data && valuationRef.current) {
-      valuationRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (showPrices && pricesTopRef.current) {
+      pricesTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [valuation]);
+  }, [selectedVersionId]);
 
   if (loading) {
     return (
@@ -189,7 +226,7 @@ function Brands() {
           {selectedModel}
         </p>
 
-        <h2 className="ap-section-title">
+        <h2 className="ap-section-title" ref={pricesTopRef}>
           {selectedBrand} {selectedModel}
         </h2>
 
@@ -210,33 +247,13 @@ function Brands() {
           }}
         />
 
-        <p className="ap-empty mb-3" style={{ fontSize: "0.8rem" }}>
-          Seleccioná una versión para ver los precios
-        </p>
-
-        <div className="row g-2">
-          {versions.map((v: any) => (
-            <div key={v.id} className="col-6 col-md-3">
-              <div
-                className={`ap-version-btn${selectedVersionId === v.id ? " ap-version-active" : ""}`}
-                onClick={() =>
-                  navigate(
-                    `?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`
-                  )
-                }
-              >
-                {v.name}
-              </div>
-            </div>
-          ))}
-        </div>
-
+        {/* ── Panel de precios: ahora arriba, justo debajo de la imagen ── */}
         {showPrices && valuationError && (
-          <div className="alert alert-warning mt-4">{valuationError}</div>
+          <div className="alert alert-warning mt-3">{valuationError}</div>
         )}
 
         {showPrices && valuation?.data && (
-          <div ref={valuationRef}>
+          <div className="ap-prices-panel mb-4">
             <h4 className="ap-prices-title">
               Precios — {versions.find((v: any) => v.id === selectedVersionId)?.name}
             </h4>
@@ -291,6 +308,27 @@ function Brands() {
             )}
           </div>
         )}
+
+        <p className="ap-empty mb-3" style={{ fontSize: "0.8rem" }}>
+          Seleccioná una versión para ver los precios
+        </p>
+
+        <div className="row g-2">
+          {versions.map((v: any) => (
+            <div key={v.id} className="col-6 col-md-3">
+              <div
+                className={`ap-version-btn${selectedVersionId === v.id ? " ap-version-active" : ""}`}
+                onClick={() =>
+                  navigate(
+                    `?brand=${selectedBrand}&brandId=${selectedBrandId}&model=${selectedModel}&modelId=${selectedModelId}&versionId=${v.id}`
+                  )
+                }
+              >
+                {v.name}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
